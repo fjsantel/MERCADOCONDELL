@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Condell</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=author@400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-left">
+                <img src="assets/Logo-02.svg" alt="Mercado Condell" class="logo-svg">
+            </div>
+            <div class="header-center">
+                <!-- Centro del header -->
+            </div>
+            <div class="header-right">
+                <div class="menu-container">
+                    <button class="menu-button" onclick="toggleMenu()">MENÚ</button>
+                    <div class="menu-dropdown" id="menuDropdown">
+                        <a href="#inicio" class="menu-item">Inicio</a>
+                        <a href="#tiendas" class="menu-item">Tiendas</a>
+                        <a href="#actividades" class="menu-item">Actividades</a>
+                        <a href="#historia" class="menu-item">Historia</a>
+                        <a href="#como-llegar" class="menu-item">Cómo llegar</a>
+                        <a href="#contacto" class="menu-item">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="map-container">
+                <img src="assets/mapa v1.svg" alt="Mapa Mercado Condell" class="map-image">
+            </div>
+        </section>
+
+        <!-- Store Information Section -->
+        <section class="store-info">
+            <div class="store-info-container">
+                <div class="store-info-left">
+                    <div class="store-number-circle">1</div>
+                </div>
+                <div class="store-info-center">
+                    <div class="store-description">
+                        <p>Esta es una descripción de tienda que es genérica, esta tienda es especializada en varias cosas que deben describirse y está orientada a recibir productos desde diversos continentes.</p>
+                    </div>
+                </div>
+                <div class="store-info-right">
+                    <div class="store-info-right-top">
+                        <h2 class="store-name">NOMBRE DE TIENDA</h2>
+                    </div>
+                    <div class="store-info-right-bottom">
+                        <div class="social-icons">
+                            <div class="social-icon"></div>
+                            <div class="social-icon"></div>
+                            <div class="social-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById('menuDropdown');
+            const button = document.querySelector('.menu-button');
+            
+            dropdown.classList.toggle('show');
+            button.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menuContainer = document.querySelector('.menu-container');
+            const dropdown = document.getElementById('menuDropdown');
+            const button = document.querySelector('.menu-button');
+            
+            if (!menuContainer.contains(event.target)) {
+                dropdown.classList.remove('show');
+                button.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

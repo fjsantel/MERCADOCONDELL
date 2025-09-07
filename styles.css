@@ -1,0 +1,481 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Author', sans-serif;
+    background-color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+/* Main container - Base: 1146x2115 */
+.main-container {
+    width: 1146px;
+    height: 2115px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header - Full width */
+.header {
+    width: 1146px;
+    height: 187.1px;
+    background-color: #000000;
+    border-radius: 20px 20px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* Header sections */
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Logo - Adjustable via CSS variables */
+.logo-svg {
+    height: var(--logo-height, 80px);
+    width: auto;
+    object-fit: contain;
+    transform: translate(var(--logo-x, 0px), var(--logo-y, 0px)) scale(var(--logo-scale, 1));
+    filter: brightness(0) invert(1);
+}
+
+/* Menu container */
+.menu-container {
+    position: relative;
+}
+
+/* Menu button */
+.menu-button {
+    width: auto;
+    min-width: 120px;
+    height: 36px;
+    background-color: #F4B609;
+    border: none;
+    border-radius: 18px;
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0 20px;
+}
+
+.menu-button:hover {
+    background-color: #e6a308;
+    transform: translateY(-1px);
+}
+
+/* Menu button when active (dropdown open) */
+.menu-button.active {
+    transform: translateX(-60px) scale(0.9);
+    background-color: #e6a308;
+}
+
+/* Menu dropdown */
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #000000;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    min-width: 180px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.menu-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Author', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item:first-child {
+    border-radius: 12px 12px 0 0;
+}
+
+.menu-item:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
+}
+
+.menu-item:hover {
+    background-color: #F4B609;
+    color: #000000;
+}
+
+/* Map section - 1144px width, auto height */
+.map-section {
+    width: 1144px;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Map SVG styling */
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+}
+
+.map-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Number circles - 38x38 (kept for store info section) */
+.number-circle {
+    width: 38px;
+    height: 38px;
+    background-color: #F7EFE2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+}
+
+/* Store information section - 1146x254 */
+.store-info {
+    width: 1146px;
+    height: 254px;
+    background-color: #000000;
+    margin: 0 auto;
+    position: relative;
+}
+
+.store-info-container {
+    display: grid;
+    grid-template-columns: 100px 1fr 300px;
+    height: 100%;
+    padding: 30px;
+}
+
+/* Left section - Circle (always centered) */
+.store-info-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-number-circle {
+    width: 38px;
+    height: 38px;
+    background-color: #F7EFE2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+}
+
+/* Center section - Description (always centered and justified) */
+.store-info-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.store-description {
+    width: 100%;
+    max-width: 385px;
+}
+
+.store-description p {
+    font-family: 'Author', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    text-align: justify;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Right section - Store details (subdivided top/bottom) */
+.store-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.store-info-right-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.store-info-right-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Store name */
+.store-name {
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Social icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #F4B609;
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .main-container {
+        width: 95vw;
+        max-width: 1146px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .header {
+        width: 100%;
+        height: auto;
+        min-height: 120px;
+        padding: 0 20px;
+    }
+    
+    .logo-svg {
+        --logo-height: 60px;
+    }
+    
+    .menu-button {
+        width: auto;
+        min-width: 150px;
+        padding: 10px 20px;
+    }
+    
+    .map-section {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .map-container {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .map-image {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .store-info {
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+    }
+    
+    .store-info-container {
+        grid-template-columns: 80px 1fr 200px;
+        padding: 20px;
+    }
+    
+    .store-info-center {
+        padding: 0 15px;
+    }
+    
+    .store-description {
+        max-width: 100%;
+    }
+    
+    .store-description p {
+        text-align: justify;
+        font-size: 12px;
+    }
+    
+    .store-name {
+        font-size: 18px;
+    }
+    
+    .store-info-right {
+        gap: 15px;
+    }
+    
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        width: 95vw;
+        margin: 5px;
+    }
+    
+    .header {
+        height: auto;
+        min-height: 100px;
+        padding: 15px;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto;
+    }
+    
+    .header-center {
+        display: none;
+    }
+    
+    .logo-svg {
+        --logo-height: 50px;
+    }
+    
+    .menu-button {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .map-section {
+        height: auto;
+        min-height: auto;
+    }
+    
+    .store-info-container {
+        grid-template-columns: 60px 1fr 150px;
+        padding: 15px;
+    }
+    
+    .store-info-center {
+        padding: 0 10px;
+    }
+    
+    .store-description p {
+        text-align: justify;
+        font-size: 11px;
+    }
+    
+    .store-name {
+        font-size: 16px;
+    }
+    
+    .store-number-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .store-info-right {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        width: 100vw;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .header {
+        border-radius: 0;
+    }
+    
+    .map-container {
+    }
+    
+    .map-image {
+    }
+}
+
+/* 
+Logo Customization Variables - Change these values to adjust logo:
+--logo-height: Height of the logo (default: 80px)
+--logo-x: Horizontal position adjustment (default: 0px)
+--logo-y: Vertical position adjustment (default: 0px) 
+--logo-scale: Scale factor (default: 1)
+
+Examples:
+.logo-svg { 
+    --logo-height: 100px;
+    --logo-x: 20px;
+    --logo-y: -10px;
+    --logo-scale: 1.2;
+}
+*/
