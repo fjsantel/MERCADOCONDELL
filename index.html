@@ -31,22 +31,6 @@
                 <!-- Centro del header -->
             </div>
             <div class="header-right">
-                <div class="category-filter">
-                    <select id="categorySelect" onchange="filterByCategory()">
-                        <option value="">Todas las categorías</option>
-                        <option value="alimentos">Alimentos</option>
-                        <option value="ropa">Ropa</option>
-                        <option value="musica">Música</option>
-                        <option value="decoracion">Decoración</option>
-                        <option value="cultura">Cultura</option>
-                        <option value="artesanias">Artesanías</option>
-                        <option value="tecnologia">Tecnología</option>
-                        <option value="belleza">Belleza</option>
-                        <option value="juguetes">Juguetes</option>
-                        <option value="hogar">Hogar</option>
-                        <option value="servicios">Servicios</option>
-                    </select>
-                </div>
                 <div class="menu-container">
                     <button class="menu-button" onclick="toggleMenu()">MENÚ</button>
                     <div class="menu-dropdown" id="menuDropdown">
@@ -105,6 +89,27 @@
                         <h2 class="store-name" id="storeName">MERCADO CONDELL</h2>
                     </div>
                     <div class="store-info-right-bottom">
+                        <div class="category-filter-container">
+                            <button id="categoryFilterBtn" class="category-filter-button" onclick="toggleCategoryFilter()">
+                                FILTRAR CATEGORÍAS
+                            </button>
+                            <div id="categoryFilterDropdown" class="category-filter-dropdown">
+                                <select id="categorySelect" onchange="filterByCategory()">
+                                    <option value="">Todas las categorías</option>
+                                    <option value="alimentos">Alimentos</option>
+                                    <option value="ropa">Ropa</option>
+                                    <option value="musica">Música</option>
+                                    <option value="decoracion">Decoración</option>
+                                    <option value="cultura">Cultura</option>
+                                    <option value="artesanias">Artesanías</option>
+                                    <option value="tecnologia">Tecnología</option>
+                                    <option value="belleza">Belleza</option>
+                                    <option value="juguetes">Juguetes</option>
+                                    <option value="hogar">Hogar</option>
+                                    <option value="servicios">Servicios</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="social-icons">
                             <div class="social-icon"></div>
                             <div class="social-icon"></div>
@@ -123,6 +128,27 @@
                 <div class="mobile-content">
                     <div class="store-description mobile-description">
                         <p id="storeDescriptionMobile">Selecciona un número en el mapa para ver la información de la tienda.</p>
+                    </div>
+                    <div class="category-filter-container mobile-category-filter">
+                        <button id="categoryFilterBtnMobile" class="category-filter-button mobile" onclick="toggleCategoryFilter()">
+                            FILTRAR CATEGORÍAS
+                        </button>
+                        <div id="categoryFilterDropdownMobile" class="category-filter-dropdown mobile">
+                            <select id="categorySelectMobile" onchange="filterByCategoryMobile()">
+                                <option value="">Todas las categorías</option>
+                                <option value="alimentos">Alimentos</option>
+                                <option value="ropa">Ropa</option>
+                                <option value="musica">Música</option>
+                                <option value="decoracion">Decoración</option>
+                                <option value="cultura">Cultura</option>
+                                <option value="artesanias">Artesanías</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="juguetes">Juguetes</option>
+                                <option value="hogar">Hogar</option>
+                                <option value="servicios">Servicios</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="social-icons mobile-social">
                         <div class="social-icon"></div>
@@ -299,9 +325,74 @@
             document.getElementById('storeDescriptionMobile').textContent = store.description;
         }
 
-        // Function to filter by category
+        // Function to toggle category filter dropdown
+        function toggleCategoryFilter() {
+            const dropdown = document.getElementById('categoryFilterDropdown');
+            const dropdownMobile = document.getElementById('categoryFilterDropdownMobile');
+            const button = document.getElementById('categoryFilterBtn');
+            const buttonMobile = document.getElementById('categoryFilterBtnMobile');
+            
+            // Toggle desktop dropdown
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+                if (button) {
+                    button.classList.toggle('active');
+                }
+            }
+            
+            // Toggle mobile dropdown
+            if (dropdownMobile) {
+                dropdownMobile.classList.toggle('show');
+                if (buttonMobile) {
+                    buttonMobile.classList.toggle('active');
+                }
+            }
+        }
+
+        // Function to filter by category (desktop)
         function filterByCategory() {
             const selectedCategory = document.getElementById('categorySelect').value;
+            performCategoryFilter(selectedCategory);
+            
+            // Hide dropdown after selection
+            hideCategoryDropdown();
+        }
+
+        // Function to filter by category (mobile)
+        function filterByCategoryMobile() {
+            const selectedCategory = document.getElementById('categorySelectMobile').value;
+            performCategoryFilter(selectedCategory);
+            
+            // Sync both selects
+            document.getElementById('categorySelect').value = selectedCategory;
+            
+            // Hide dropdown after selection
+            hideCategoryDropdown();
+        }
+
+        // Function to hide category dropdown
+        function hideCategoryDropdown() {
+            const dropdown = document.getElementById('categoryFilterDropdown');
+            const dropdownMobile = document.getElementById('categoryFilterDropdownMobile');
+            const button = document.getElementById('categoryFilterBtn');
+            const buttonMobile = document.getElementById('categoryFilterBtnMobile');
+            
+            if (dropdown) {
+                dropdown.classList.remove('show');
+            }
+            if (dropdownMobile) {
+                dropdownMobile.classList.remove('show');
+            }
+            if (button) {
+                button.classList.remove('active');
+            }
+            if (buttonMobile) {
+                buttonMobile.classList.remove('active');
+            }
+        }
+
+        // Function to perform category filtering
+        function performCategoryFilter(selectedCategory) {
             const circles = document.querySelectorAll('.map-circle');
             
             // Remove all category highlights first
@@ -440,6 +531,22 @@
             selectedStore = 1;
             updateStoreInfo(1);
             document.querySelector('.map-circle.circle-1').classList.add('active');
+
+            // Close category dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const categoryContainer = document.querySelectorAll('.category-filter-container');
+                let isInsideCategory = false;
+                
+                categoryContainer.forEach(container => {
+                    if (container.contains(event.target)) {
+                        isInsideCategory = true;
+                    }
+                });
+                
+                if (!isInsideCategory) {
+                    hideCategoryDropdown();
+                }
+            });
         });
     </script>
 </body>

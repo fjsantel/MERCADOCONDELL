@@ -59,33 +59,76 @@ body {
     gap: 15px;
 }
 
-/* Category filter styles */
-.category-filter {
+/* Category filter styles - now in store info area */
+.category-filter-container {
+    position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
 }
 
-.category-filter select {
+.category-filter-button {
     background-color: #F7EFE2;
     border: 2px solid #F4B609;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 8px 16px;
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    white-space: nowrap;
+}
+
+.category-filter-button:hover {
+    background-color: #F4B609;
+    color: white;
+    transform: scale(1.02);
+}
+
+.category-filter-button.active {
+    background-color: #F4B609;
+    color: white;
+}
+
+.category-filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-width: 200px;
+    background-color: white;
+    border: 2px solid #F4B609;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    margin-top: 5px;
+}
+
+.category-filter-dropdown.show {
+    display: block;
+}
+
+.category-filter-dropdown select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 12px;
     font-family: 'Author', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #000000;
     cursor: pointer;
-    transition: all 0.3s ease;
     outline: none;
 }
 
-.category-filter select:hover {
-    background-color: #F4B609;
-    color: white;
-}
-
-.category-filter select:focus {
-    box-shadow: 0 0 8px rgba(244, 182, 9, 0.3);
+.category-filter-dropdown select:focus {
+    background-color: #f8f9fa;
 }
 
 /* Logo - Adjustable via CSS variables */
@@ -667,9 +710,25 @@ body {
     }
     
     /* Mobile category filter */
-    .category-filter select {
-        font-size: 12px;
-        padding: 6px 8px;
+    .mobile-category-filter {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .category-filter-button.mobile {
+        font-size: 11px;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .category-filter-dropdown.mobile {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: auto;
+        margin-top: 8px;
     }
     
     .header-right {
