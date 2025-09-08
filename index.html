@@ -9,8 +9,8 @@
     <link href="https://api.fontshare.com/v2/css?f[]=author@400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Breakpoint Markers -->
-    <div id="bpMarkers" class="bp-markers-container show">
+    <!-- Breakpoint Markers (hidden by default) -->
+    <div id="bpMarkers" class="bp-markers-container">
         <div class="bp-marker desktop">Desktop (>1200px)</div>
         <div class="bp-marker tablet">Tablet (≤1200px)</div>
         <div class="bp-marker mobile">Mobile (≤768px)</div>
@@ -18,8 +18,8 @@
         <div class="bp-marker extra-small">Extra Small (≤380px)</div>
     </div>
     
-    <!-- Toggle Button -->
-    <button id="bpToggle" class="bp-toggle" onclick="toggleBpMarkers()">BP</button>
+    <!-- Toggle Button (hidden by default) -->
+    <button id="bpToggle" class="bp-toggle hidden" onclick="toggleBpMarkers()">BP</button>
     
     <div class="main-container">
         <!-- Header Section -->
@@ -299,10 +299,13 @@
                     updateStoreInfo(storeNumber);
                 });
 
-                // Touch events for mobile devices
+                // Touch events for mobile devices - enhanced for better touch support
                 circle.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    // Mark as touch device
+                    isTouchDevice = true;
                     
                     // Update the selected store
                     selectedStore = storeNumber;
@@ -316,6 +319,11 @@
                     // Add active class to touched circle
                     circle.classList.add('active');
                     updateStoreInfo(storeNumber);
+                });
+                
+                // Touch end event to prevent conflicts
+                circle.addEventListener('touchend', (e) => {
+                    e.preventDefault();
                 });
             });
 

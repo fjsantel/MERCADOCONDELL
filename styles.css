@@ -190,12 +190,13 @@ body {
     color: #000000;
     z-index: 10;
     box-shadow: 0 calc(2px * var(--circle-scale, 1)) calc(8px * var(--circle-scale, 1)) rgba(0, 0, 0, 0.3);
-    transform: translate(-50%, -50%) scale(var(--circle-individual-scale, 1));
-    /* Desktop scale by default */
-    --circle-individual-scale: var(--circle-1-scale, 1);
-    /* Interactive properties */
     cursor: pointer;
     transition: all 0.3s ease;
+    transform: translate(-50%, -50%) scale(var(--circle-individual-scale, 1));
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* Map circle hover effects - Works on all versions */
@@ -811,6 +812,10 @@ body {
 .bp-toggle.active {
     background-color: rgba(255, 165, 0, 0.8);
     color: black;
+}
+
+.bp-toggle.hidden {
+    display: none;
 }
 
 /* Show different markers at different breakpoints */
