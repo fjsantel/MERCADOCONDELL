@@ -1,0 +1,21 @@
+MERCADO CONDELL - DATOS DE SU LOCAL
+
+LOCAL Nº: ____
+
+NOMBRE: _________________________________
+
+CATEGORIA:
+[ ] Alimentos  [ ] Ropa  [ ] Música  [ ] Decoración
+[ ] Cultura  [ ] Artesanías  [ ] Tecnología  [ ] Belleza
+[ ] Juguetes  [ ] Hogar  [ ] Servicios
+
+DESCRIPCION:
+_________________________________________
+_________________________________________
+_________________________________________
+
+TELEFONO: ___________________________
+
+HORARIOS: ___________________________
+
+FIRMA: ______________________________

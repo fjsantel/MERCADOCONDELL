@@ -878,6 +878,14 @@ body {
 }
 
 /* Breakpoint Markers for Development */
+.bp-markers-container {
+    display: none;
+}
+
+.bp-markers-container.show {
+    display: block;
+}
+
 .bp-marker {
     position: fixed !important;
     top: 0 !important;
@@ -923,7 +931,7 @@ body {
 }
 
 .bp-toggle.hidden {
-    display: none;
+    display: block;
 }
 
 /* Show different markers at different breakpoints */
