@@ -15,10 +15,12 @@ body {
     padding: 10px;
 }
 
-/* Main container - Base: 1146x2115 */
+/* Main container - Base: Full available width with constraints */
 .main-container {
-    width: 1146px;
-    height: 2115px;
+    width: calc(100vw - 20px);
+    height: auto;
+    min-height: 100vh;
+    max-width: 1146px;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
@@ -27,7 +29,7 @@ body {
 
 /* Header - Full width */
 .header {
-    width: 1146px;
+    width: 100%;
     height: 187.1px;
     background-color: #000000;
     border-radius: 20px 20px 0 0;
@@ -147,17 +149,17 @@ body {
     color: #000000;
 }
 
-/* Map section - 1144px width, auto height */
+/* Map section - Full width, auto height to fit content */
 .map-section {
-    width: 1144px;
+    width: 100%;
     height: auto;
     position: relative;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .map-container {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: relative;
     display: flex;
     align-items: center;
@@ -170,6 +172,80 @@ body {
     height: auto;
     display: block;
     max-width: 100%;
+}
+
+/* Map circles - Base properties for all versions */
+.map-circle {
+    position: absolute;
+    width: calc(38px * var(--circle-scale, 1));
+    height: calc(38px * var(--circle-scale, 1));
+    background-color: #F7EFE2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: calc(18px * var(--circle-scale, 1));
+    color: #000000;
+    z-index: 10;
+    box-shadow: 0 calc(2px * var(--circle-scale, 1)) calc(8px * var(--circle-scale, 1)) rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%) scale(var(--circle-individual-scale, 1));
+    /* Desktop scale by default */
+    --circle-individual-scale: var(--circle-1-scale, 1);
+    /* Interactive properties */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Map circle hover effects - Works on all versions */
+.map-circle:hover {
+    background-color: #F4B609;
+    transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 1.2));
+    box-shadow: 0 calc(4px * var(--circle-scale, 1)) calc(16px * var(--circle-scale, 1)) rgba(244, 182, 9, 0.5);
+    z-index: 20;
+}
+
+/* Active circle (when selected) - Works on all versions */
+.map-circle.active {
+    background-color: #F7EFE2; /* Default beige background, not yellow */
+    border: 2px solid #F4B609; /* Yellow border to indicate selection */
+    transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 1.1));
+    box-shadow: 0 calc(3px * var(--circle-scale, 1)) calc(12px * var(--circle-scale, 1)) rgba(244, 182, 9, 0.4);
+    z-index: 15;
+}
+
+/* Hover state for temporary preview - distinct from active */
+.map-circle.hover {
+    background-color: #e6a308;
+    transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 1.05));
+    box-shadow: 0 calc(2px * var(--circle-scale, 1)) calc(8px * var(--circle-scale, 1)) rgba(230, 163, 8, 0.3);
+    z-index: 12;
+}
+
+/* Ensure hover works on touch devices too */
+@media (hover: hover) and (pointer: fine) {
+    /* Desktop hover behavior */
+    .map-circle:not(.active):hover {
+        background-color: #F4B609;
+        transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 1.15));
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    /* Touch device behavior - enhance active state */
+    .map-circle.active {
+        background-color: #F7EFE2; /* Keep beige background */
+        border: 3px solid #F4B609; /* Thicker border for touch devices */
+        transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 1.2));
+        box-shadow: 0 calc(4px * var(--circle-scale, 1)) calc(16px * var(--circle-scale, 1)) rgba(244, 182, 9, 0.6);
+    }
+    
+    /* Add touch feedback */
+    .map-circle:active {
+        background-color: #e6a308;
+        transform: translate(-50%, -50%) scale(calc(var(--circle-individual-scale, 1) * 0.95));
+    }
 }
 
 .map-container {
@@ -197,12 +273,129 @@ body {
     color: #000000;
 }
 
-/* Store information section - 1146x254 */
+/* Vertical alignment guides - invisible rules for column alignment */
+:root {
+    --left-column-alignment: 2.5%;   /* Left column guide for numbers 1,2,3,4 and 19,20 */
+    --center-column-alignment: 43.7%; /* Center column guide for number 5 */
+    --right-column-alignment: 96.3%;  /* Right column guide for numbers 9-18 */
+    
+    /* Responsive scaling system for circle numbers */
+    --circle-base-scale: 1;           /* Desktop base scale (>1200px) */
+    --circle-tablet-scale: 0.85;      /* Tablet scale (≤1200px) */
+    --circle-mobile-scale: 0.7;       /* Mobile scale (≤768px) */
+    --circle-small-mobile-scale: 0.6; /* Small mobile scale (≤480px) */
+    --circle-extra-small-scale: 0.5;  /* Extra small scale (≤380px) */
+}
+
+/* Map circles - Desktop positions (all versions inherit these) */
+.map-circle.circle-1 { 
+    top: var(--circle-1-top, 41%);     /* y=687.8/1678 = 41.0% */
+    left: var(--circle-1-left, 2.5%);  /* x=28.5/1141 = 2.5% */
+    --circle-individual-scale: var(--circle-1-scale, 1);
+}
+.map-circle.circle-2 { 
+    top: var(--circle-2-top, 28.3%);   /* y=474.5/1678 = 28.3% */
+    left: var(--circle-2-left, 2.5%);  /* x=28.5/1141 = 2.5% */
+    --circle-individual-scale: var(--circle-2-scale, 1);
+}
+.map-circle.circle-3 { 
+    top: var(--circle-3-top, 18.0%);   /* y=301.5/1678 = 18.0% */
+    left: var(--circle-3-left, 2.5%);  /* x=28.5/1141 = 2.5% */
+    --circle-individual-scale: var(--circle-3-scale, 1);
+}
+.map-circle.circle-4 { 
+    top: var(--circle-4-top, 8.7%);    /* y=145.8/1678 = 8.7% */
+    left: var(--circle-4-left, 2.5%);  /* x=28.5/1141 = 2.5% */
+    --circle-individual-scale: var(--circle-4-scale, 1);
+}
+.map-circle.circle-5 { 
+    top: var(--circle-5-top, 23.7%);   /* y=397.8/1678 = 23.7% */
+    left: var(--circle-5-left, 43.7%); /* x=498.8/1141 = 43.7% */
+    --circle-individual-scale: var(--circle-5-scale, 1);
+}
+.map-circle.circle-6 { 
+    top: var(--circle-6-top, 2.2%);    /* y=36.3/1678 = 2.2% */
+    left: var(--circle-6-left, 6.4%);  /* x=73.4/1141 = 6.4% */
+    --circle-individual-scale: var(--circle-6-scale, 1);
+}
+.map-circle.circle-7 { 
+    top: var(--circle-7-top, 2.2%);    /* y=36.3/1678 = 2.2% */
+    left: var(--circle-7-left, 20.1%); /* x=229.4/1141 = 20.1% */
+    --circle-individual-scale: var(--circle-7-scale, 1);
+}
+.map-circle.circle-8 { 
+    top: var(--circle-8-top, 2.2%);    /* y=36.3/1678 = 2.2% */
+    left: var(--circle-8-left, 34.7%); /* x=396.4/1141 = 34.7% */
+    --circle-individual-scale: var(--circle-8-scale, 1);
+}
+.map-circle.circle-9 { 
+    top: var(--circle-9-top, 4.4%);    /* y=74.1/1678 = 4.4% */
+    left: var(--circle-9-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-9-scale, 1);
+}
+.map-circle.circle-10 { 
+    top: var(--circle-10-top, 14.1%);  /* y=237.1/1678 = 14.1% */
+    left: var(--circle-10-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-10-scale, 1);
+}
+.map-circle.circle-11 { 
+    top: var(--circle-11-top, 23.7%);  /* y=397.1/1678 = 23.7% */
+    left: var(--circle-11-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-11-scale, 1);
+}
+.map-circle.circle-12 { 
+    top: var(--circle-12-top, 32.4%);  /* y=543.1/1678 = 32.4% */
+    left: var(--circle-12-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-12-scale, 1);
+}
+.map-circle.circle-13 { 
+    top: var(--circle-13-top, 42.1%);  /* y=706.1/1678 = 42.1% */
+    left: var(--circle-13-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-13-scale, 1);
+}
+.map-circle.circle-14 { 
+    top: var(--circle-14-top, 51.6%);  /* y=866.1/1678 = 51.6% */
+    left: var(--circle-14-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-14-scale, 1);
+}
+.map-circle.circle-15 { 
+    top: var(--circle-15-top, 60.2%);  /* y=1010.1/1678 = 60.2% */
+    left: var(--circle-15-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-15-scale, 1);
+}
+.map-circle.circle-16 { 
+    top: var(--circle-16-top, 69.9%);  /* y=1173.1/1678 = 69.9% */
+    left: var(--circle-16-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-16-scale, 1);
+}
+.map-circle.circle-17 { 
+    top: var(--circle-17-top, 79.4%);  /* y=1333.1/1678 = 79.4% */
+    left: var(--circle-17-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-17-scale, 1);
+}
+.map-circle.circle-18 { 
+    top: var(--circle-18-top, 88.4%);  /* y=1483.1/1678 = 88.4% */
+    left: var(--circle-18-left, var(--right-column-alignment)); /* Aligned to right column guide */
+    --circle-individual-scale: var(--circle-18-scale, 1);
+}
+.map-circle.circle-19 { 
+    top: var(--circle-19-top, 95.1%);  /* y=1595.1/1678 = 95.1% */
+    left: var(--circle-19-left, 24.5%); /* x=280.1/1141 = 24.5% */
+    --circle-individual-scale: var(--circle-19-scale, 1);
+}
+
+.map-circle.circle-20 { 
+    top: var(--circle-20-top, 83.0%);  /* y=1393.1/1678 = 83.0% */
+    left: var(--circle-20-left, 24.5%); /* x=280.1/1141 = 24.5% */
+    --circle-individual-scale: var(--circle-20-scale, 1);
+}
+
+/* Store information section - Full width, fixed height */
 .store-info {
-    width: 1146px;
+    width: 100%;
     height: 254px;
     background-color: #000000;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
 }
 
@@ -308,6 +501,11 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
+    /* Tablet scale for circles */
+    .map-circle {
+        --circle-individual-scale: 0.7;
+    }
+    
     .main-container {
         width: 95vw;
         max-width: 1146px;
@@ -407,7 +605,27 @@ body {
     }
 }
 
+/* Responsive scaling for circles - Tablet */
+@media (max-width: 1200px) {
+    :root {
+        --circle-scale: var(--circle-tablet-scale);
+    }
+    
+    .map-circle {
+        --circle-individual-scale: var(--circle-tablet-scale);
+    }
+}
+
 @media (max-width: 768px) {
+    :root {
+        --circle-scale: var(--circle-mobile-scale);
+    }
+    
+    /* Mobile scale for circles */
+    .map-circle {
+        --circle-individual-scale: var(--circle-mobile-scale);
+    }
+    
     .main-container {
         width: 95vw;
         margin: 5px;
@@ -494,6 +712,14 @@ body {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --circle-scale: var(--circle-small-mobile-scale);
+    }
+    
+    .map-circle {
+        --circle-individual-scale: var(--circle-small-mobile-scale);
+    }
+    
     .main-container {
         width: 100vw;
         margin: 0;
@@ -513,6 +739,14 @@ body {
 
 /* Extra small mobile devices (330px width and similar) */
 @media (max-width: 380px) {
+    :root {
+        --circle-scale: var(--circle-extra-small-scale);
+    }
+    
+    .map-circle {
+        --circle-individual-scale: var(--circle-extra-small-scale);
+    }
+    
     .logo-svg {
         height: var(--logo-height, 80px);
         width: auto;
@@ -531,6 +765,101 @@ body {
     
     .menu-button.active {
         transform: scale(0.765); /* Only scale, no displacement */
+    }
+}
+
+/* Breakpoint Markers for Development */
+.bp-marker {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    padding: 10px 15px !important;
+    background-color: red !important;
+    color: white !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    z-index: 999999 !important;
+    border: 2px solid white !important;
+    display: block !important;
+    opacity: 0.6 !important;
+}
+
+/* Toggle button */
+.bp-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 10000;
+    transition: all 0.2s ease;
+}
+
+.bp-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.bp-toggle.active {
+    background-color: rgba(255, 165, 0, 0.8);
+    color: black;
+}
+
+/* Show different markers at different breakpoints */
+.bp-marker.tablet, 
+.bp-marker.mobile, 
+.bp-marker.small-mobile, 
+.bp-marker.extra-small {
+    display: none !important;
+}
+
+.bp-marker.desktop {
+    display: block !important;
+    background-color: red !important;
+}
+
+@media (max-width: 1200px) {
+    .bp-marker.desktop { display: none !important; }
+    .bp-marker.tablet { 
+        display: block !important;
+        background-color: orange !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .bp-marker.tablet { display: none !important; }
+    .bp-marker.mobile { 
+        display: block !important;
+        background-color: green !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .bp-marker.mobile { display: none !important; }
+    .bp-marker.small-mobile { 
+        display: block !important;
+        background-color: blue !important;
+    }
+    
+    /* Small mobile scale for circles */
+    .map-circle {
+        --circle-individual-scale: 0.39;
+    }
+}
+
+@media (max-width: 380px) {
+    .bp-marker.small-mobile { display: none !important; }
+    .bp-marker.extra-small { 
+        display: block !important;
+        background-color: purple !important;
     }
 }
 

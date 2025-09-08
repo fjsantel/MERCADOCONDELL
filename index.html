@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +9,18 @@
     <link href="https://api.fontshare.com/v2/css?f[]=author@400,700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Breakpoint Markers -->
+    <div id="bpMarkers" class="bp-markers-container show">
+        <div class="bp-marker desktop">Desktop (>1200px)</div>
+        <div class="bp-marker tablet">Tablet (≤1200px)</div>
+        <div class="bp-marker mobile">Mobile (≤768px)</div>
+        <div class="bp-marker small-mobile">Small Mobile (≤480px)</div>
+        <div class="bp-marker extra-small">Extra Small (≤380px)</div>
+    </div>
+    
+    <!-- Toggle Button -->
+    <button id="bpToggle" class="bp-toggle" onclick="toggleBpMarkers()">BP</button>
+    
     <div class="main-container">
         <!-- Header Section -->
         <header class="header">
@@ -37,22 +50,43 @@
             <div class="map-container">
                 <img src="assets/mapa v1.svg" alt="Mapa Mercado Condell" class="map-image">
             </div>
+            <!-- Map circles for small mobile -->
+            <div class="map-circle circle-1">1</div>
+            <div class="map-circle circle-2">2</div>
+            <div class="map-circle circle-3">3</div>
+            <div class="map-circle circle-4">4</div>
+            <div class="map-circle circle-5">5</div>
+            <div class="map-circle circle-6">6</div>
+            <div class="map-circle circle-7">7</div>
+            <div class="map-circle circle-8">8</div>
+            <div class="map-circle circle-9">9</div>
+            <div class="map-circle circle-10">10</div>
+            <div class="map-circle circle-11">11</div>
+            <div class="map-circle circle-12">12</div>
+            <div class="map-circle circle-13">13</div>
+            <div class="map-circle circle-14">14</div>
+            <div class="map-circle circle-15">15</div>
+            <div class="map-circle circle-16">16</div>
+            <div class="map-circle circle-17">17</div>
+            <div class="map-circle circle-18">18</div>
+            <div class="map-circle circle-19">19</div>
+            <div class="map-circle circle-20">20</div>
         </section>
 
         <!-- Store Information Section -->
         <section class="store-info">
             <div class="store-info-container">
                 <div class="store-info-left">
-                    <div class="store-number-circle">1</div>
+                    <div class="store-number-circle" id="storeNumberCircle">1</div>
                 </div>
                 <div class="store-info-center">
                     <div class="store-description">
-                        <p>Esta es una descripción de tienda que es genérica, esta tienda es especializada en varias cosas que deben describirse y está orientada a recibir productos desde diversos continentes.</p>
+                        <p id="storeDescription">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
                 </div>
                 <div class="store-info-right">
                     <div class="store-info-right-top">
-                        <h2 class="store-name">NOMBRE DE TIENDA</h2>
+                        <h2 class="store-name" id="storeName">MERCADO CONDELL</h2>
                     </div>
                     <div class="store-info-right-bottom">
                         <div class="social-icons">
@@ -65,14 +99,14 @@
                 
                 <!-- Mobile layout: Circle + Title in same line -->
                 <div class="mobile-header">
-                    <div class="store-number-circle mobile-circle">1</div>
-                    <h2 class="store-name mobile-title">NOMBRE DE TIENDA</h2>
+                    <div class="store-number-circle mobile-circle" id="storeNumberCircleMobile">1</div>
+                    <h2 class="store-name mobile-title" id="storeNameMobile">MERCADO CONDELL</h2>
                 </div>
                 
                 <!-- Mobile description and social icons -->
                 <div class="mobile-content">
                     <div class="store-description mobile-description">
-                        <p>Esta es una descripción de tienda que es genérica, esta tienda es especializada en varias cosas que deben describirse y está orientada a recibir productos desde diversos continentes.</p>
+                        <p id="storeDescriptionMobile">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
                     <div class="social-icons mobile-social">
                         <div class="social-icon"></div>
@@ -103,6 +137,192 @@
                 dropdown.classList.remove('show');
                 button.classList.remove('active');
             }
+        });
+
+        // Toggle breakpoint markers
+        function toggleBpMarkers() {
+            const markers = document.getElementById('bpMarkers');
+            const button = document.getElementById('bpToggle');
+            
+            markers.classList.toggle('show');
+            button.classList.toggle('active');
+        }
+
+        // Store data for 19 shops
+        const storeData = {
+            1: {
+                name: "CAFÉ MERCADO",
+                description: "Acogedora cafetería especializada en café de especialidad y repostería artesanal. Ideal para comenzar el día o tomar un descanso con productos frescos y de origen local."
+            },
+            2: {
+                name: "DELICIAS DEL MAR",
+                description: "Restaurante de mariscos frescos que ofrece lo mejor de la costa chilena. Especialidad en ceviches, empanadas de mariscos y pescados a la plancha con vista al mercado."
+            },
+            3: {
+                name: "FRUTAS Y VERDURAS EL HUERTO",
+                description: "Puesto de frutas y verduras frescas seleccionadas diariamente desde los mejores campos de la región. Productos orgánicos y de temporada a precios accesibles."
+            },
+            4: {
+                name: "CARNES SELECTAS DON JOSÉ",
+                description: "Carnicería tradicional con más de 30 años de experiencia. Ofrece cortes premium, embutidos caseros y preparaciones especiales para asados y ocasiones especiales."
+            },
+            5: {
+                name: "PANADERÍA ARTESANAL",
+                description: "Pan recién horneado cada mañana con recetas tradicionales y técnicas artesanales. Especialidad en pan amasado, sopaipillas y empanadas horneadas."
+            },
+            6: {
+                name: "ESPECIAS DEL MUNDO",
+                description: "Tienda especializada en especias, hierbas y condimentos de todas partes del mundo. Productos únicos para dar sabor auténtico a tus preparaciones culinarias."
+            },
+            7: {
+                name: "LÁCTEOS LA GRANJA",
+                description: "Productos lácteos frescos directamente desde productores locales. Quesos artesanales, leche fresca, mantequilla y yogures naturales sin aditivos artificiales."
+            },
+            8: {
+                name: "FLORES Y PLANTAS JARDÍN",
+                description: "Floristería con gran variedad de flores frescas y plantas ornamentales. Arreglos para ocasiones especiales y asesoría en jardinería doméstica."
+            },
+            9: {
+                name: "ROPA Y ACCESORIOS ESTILO",
+                description: "Boutique de moda con prendas casuales y elegantes para toda la familia. Accesorios únicos y ropa de diseñadores locales con estilo contemporáneo."
+            },
+            10: {
+                name: "LIBRERÍA Y PAPELERÍA CULTURAL",
+                description: "Espacio dedicado a la cultura con libros, revistas, material de oficina y artículos de papelería. Punto de encuentro para amantes de la lectura y la escritura."
+            },
+            11: {
+                name: "JUGOS NATURALES VITA",
+                description: "Bar de jugos y batidos naturales preparados al momento con frutas frescas. Opciones detox, energizantes y smoothies nutritivos para una vida saludable."
+            },
+            12: {
+                name: "ARTESANÍAS LOCALES",
+                description: "Exposición y venta de artesanías tradicionales chilenas realizadas por artesanos locales. Productos únicos que reflejan la cultura y tradición de nuestra región."
+            },
+            13: {
+                name: "ELECTRÓNICOS TECH STORE",
+                description: "Tienda de tecnología con los últimos dispositivos, accesorios y servicio técnico especializado. Atención personalizada y garantía en todos los productos."
+            },
+            14: {
+                name: "PERFUMERÍA ESENCIA",
+                description: "Productos de belleza y cuidado personal de marcas reconocidas. Perfumes, cosméticos y tratamientos para el cuidado de la piel con asesoría especializada."
+            },
+            15: {
+                name: "JUGUETERÍA FANTASÍA",
+                description: "Mundo mágico lleno de juguetes educativos, didácticos y de entretenimiento para niños de todas las edades. Productos que estimulan la creatividad y el aprendizaje."
+            },
+            16: {
+                name: "FERRETERÍA EL MARTILLO",
+                description: "Herramientas, materiales de construcción y artículos para el hogar. Todo lo necesario para reparaciones domésticas y proyectos de mejoramiento del hogar."
+            },
+            17: {
+                name: "ANTIGÜEDADES Y VINTAGE",
+                description: "Colección de objetos antiguos, muebles vintage y artículos de colección. Tesoros únicos con historia que agregan carácter especial a cualquier espacio."
+            },
+            18: {
+                name: "COMIDA INTERNACIONAL",
+                description: "Restaurante que ofrece sabores del mundo con platos típicos de diferentes culturas. Fusión gastronómica que celebra la diversidad culinaria internacional."
+            },
+            19: {
+                name: "SERVICIOS GENERALES",
+                description: "Centro de servicios múltiples que incluye cobro de cuentas, envío de encomiendas, fotocopias y trámites diversos. Soluciones prácticas para el día a día."
+            },
+            20: {
+                name: "MERCADO NOCTURNO",
+                description: "Espacio gastronómico que cobra vida al atardecer con food trucks, música en vivo y ambiente bohemio. Ideal para disfrutar de la noche con sabores únicos y entretenimiento."
+            }
+        };
+
+        // Function to update store information
+        function updateStoreInfo(storeNumber) {
+            const store = storeData[storeNumber];
+            if (!store) return;
+
+            // Update desktop version
+            document.getElementById('storeNumberCircle').textContent = storeNumber;
+            document.getElementById('storeName').textContent = store.name;
+            document.getElementById('storeDescription').textContent = store.description;
+
+            // Update mobile version
+            document.getElementById('storeNumberCircleMobile').textContent = storeNumber;
+            document.getElementById('storeNameMobile').textContent = store.name;
+            document.getElementById('storeDescriptionMobile').textContent = store.description;
+        }
+
+        // Add event listeners to all circles for all versions
+        document.addEventListener('DOMContentLoaded', function() {
+            const circles = document.querySelectorAll('.map-circle');
+            let isTouchDevice = false;
+            let selectedStore = 1; // Track the currently selected store
+
+            // Detect if it's a touch device
+            window.addEventListener('touchstart', function() {
+                isTouchDevice = true;
+            }, { once: true });
+            
+            circles.forEach(circle => {
+                const storeNumber = parseInt(circle.textContent);
+                
+                // Mouse events for desktop and tablet (hover effects only)
+                circle.addEventListener('mouseenter', () => {
+                    if (!isTouchDevice) {
+                        // Show hover info but don't change selection
+                        updateStoreInfo(storeNumber);
+                        circle.classList.add('hover');
+                    }
+                });
+
+                // Mouse leave for desktop - return to selected store
+                circle.addEventListener('mouseleave', () => {
+                    if (!isTouchDevice) {
+                        circle.classList.remove('hover');
+                        // Return to the currently selected store
+                        updateStoreInfo(selectedStore);
+                    }
+                });
+                
+                // Click events for all devices - this changes the selection
+                circle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Update the selected store
+                    selectedStore = storeNumber;
+                    
+                    // Remove active class from all circles
+                    circles.forEach(c => {
+                        c.classList.remove('active');
+                        c.classList.remove('hover');
+                    });
+                    
+                    // Add active class to clicked circle
+                    circle.classList.add('active');
+                    updateStoreInfo(storeNumber);
+                });
+
+                // Touch events for mobile devices
+                circle.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Update the selected store
+                    selectedStore = storeNumber;
+                    
+                    // Remove active class from all circles
+                    circles.forEach(c => {
+                        c.classList.remove('active');
+                        c.classList.remove('hover');
+                    });
+                    
+                    // Add active class to touched circle
+                    circle.classList.add('active');
+                    updateStoreInfo(storeNumber);
+                });
+            });
+
+            // Initialize with store 1 and mark it as active
+            selectedStore = 1;
+            updateStoreInfo(1);
+            document.querySelector('.map-circle.circle-1').classList.add('active');
         });
     </script>
 </body>
