@@ -51,7 +51,7 @@ collections:
               - {label: "Descripción", name: "descripcion", widget: "text", rows: 4}
 
 # Configuración de autenticación y permisos
-publish_mode: editorial_workflow # Enable editorial workflow
+# publish_mode: editorial_workflow # Disabled for direct publishing
 show_preview_links: true
 
 # Configuración del editor
