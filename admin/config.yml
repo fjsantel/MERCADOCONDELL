@@ -13,18 +13,6 @@ public_folder: "/assets" # The src attribute for uploaded media
 
 # Configuración de colecciones
 collections:
-  - name: "negocios" # Used in routes, e.g., /admin/collections/negocios
-    label: "Negocios" # Used in the UI
-    folder: "_data" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "negocio-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Número", name: "numero", widget: "number", min: 1, max: 50}
-      - {label: "Nombre", name: "nombre", widget: "string"}
-      - {label: "Categoría", name: "categoria", widget: "select", options: ["alimentos", "ropa", "musica", "decoracion", "cultura", "artesanias", "tecnologia", "belleza", "juguetes", "hogar", "servicios"]}
-      - {label: "Descripción", name: "descripcion", widget: "text", rows: 4}
-      - {label: "Activo", name: "activo", widget: "boolean", default: true}
-      
   - name: "configuracion"
     label: "Configuración del Sitio"
     files:
@@ -38,12 +26,13 @@ collections:
           - {label: "Email de Contacto", name: "email", widget: "string"}
           
       - name: "negocios_data"
-        label: "Datos de Negocios"
-        file: "_data/negocios.json"
+        label: "Editar Negocios"
+        file: "_data/negocios.json" 
         fields:
           - name: "negocios"
-            label: "Lista de Negocios"
+            label: "Lista de Negocios del Mercado"
             widget: "list"
+            summary: "{{fields.numero}}. {{fields.nombre}} ({{fields.categoria}})"
             fields:
               - {label: "Número", name: "numero", widget: "number", min: 1, max: 50}
               - {label: "Nombre", name: "nombre", widget: "string"}
