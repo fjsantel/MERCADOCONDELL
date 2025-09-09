@@ -1,0 +1,589 @@
+/* Admin-specific styles */
+
+/* Login Screen */
+.admin-body {
+    margin: 0;
+    padding: 0;
+    font-family: "Author", sans-serif;
+}
+
+.login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 300px;
+}
+
+.login-logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.login-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form input {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Author", sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.login-button {
+    padding: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.login-button:hover {
+    background: #0056b3;
+}
+
+.login-error {
+    color: #dc3545;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Admin Header */
+.admin-title {
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Admin Content Layout */
+.admin-content {
+    flex: 1;
+    padding: 0;
+}
+
+.admin-content-container {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    gap: 0;
+    height: calc(100vh - 80px);
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Left Panel - Store List */
+.admin-left-panel {
+    background: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.admin-left-panel h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.store-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.store-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.store-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.store-item.active {
+    background: #007bff;
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.store-item-number {
+    background: #333;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.store-item.active .store-item-number {
+    background: white;
+    color: #007bff;
+}
+
+.store-item-info {
+    flex: 1;
+}
+
+.store-item-name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.store-item-category {
+    font-size: 12px;
+    opacity: 0.7;
+    text-transform: capitalize;
+}
+
+.add-store-btn {
+    width: 100%;
+    padding: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.add-store-btn:hover {
+    background: #218838;
+}
+
+/* Center Panel - Store Editor */
+.admin-center-panel {
+    padding: 20px 30px;
+    background: white;
+    overflow-y: auto;
+}
+
+.no-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: #666;
+}
+
+.no-selection h3 {
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 700;
+}
+
+.store-editor {
+    height: 100%;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Author", sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.save-btn {
+    padding: 12px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.save-btn:hover {
+    background: #0056b3;
+}
+
+.cancel-btn {
+    padding: 12px 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.cancel-btn:hover {
+    background: #545b62;
+}
+
+.delete-btn {
+    padding: 12px 20px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Right Panel - Image Upload */
+.admin-right-panel {
+    background: #f8f9fa;
+    border-left: 1px solid #dee2e6;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.admin-right-panel h3,
+.admin-right-panel h4 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.admin-right-panel h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.image-upload-section {
+    margin-bottom: 30px;
+}
+
+.drop-zone {
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    border-color: #0056b3;
+    background: #f0f8ff;
+    transform: scale(1.02);
+}
+
+.drop-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.drop-zone p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.browse-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.browse-link:hover {
+    color: #0056b3;
+}
+
+.drop-zone-hint {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.uploaded-image-preview {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.uploaded-image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-info {
+    margin-top: 15px;
+}
+
+.image-info p {
+    margin: 10px 0;
+    font-weight: 700;
+    color: #333;
+    font-size: 14px;
+}
+
+.upload-btn {
+    padding: 10px 16px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.upload-btn:hover {
+    background: #218838;
+}
+
+.remove-btn {
+    padding: 10px 16px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.remove-btn:hover {
+    background: #c82333;
+}
+
+.current-images-section h4 {
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+    margin-top: 0;
+}
+
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.image-item {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-item:hover {
+    transform: translateY(-2px);
+}
+
+.image-item img {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.image-item p {
+    font-size: 11px;
+    color: #666;
+    margin: 0;
+    word-break: break-word;
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 700;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: #28a745;
+}
+
+.notification.error {
+    background: #dc3545;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .admin-content-container {
+        grid-template-columns: 250px 1fr 300px;
+    }
+    
+    .admin-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-content-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        height: auto;
+    }
+    
+    .admin-left-panel,
+    .admin-right-panel {
+        border: none;
+        border-bottom: 1px solid #dee2e6;
+        height: auto;
+        max-height: 300px;
+    }
+    
+    .admin-center-panel {
+        min-height: 400px;
+    }
+    
+    .images-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        margin: 20px;
+        padding: 30px 20px;
+        min-width: unset;
+    }
+    
+    .admin-left-panel,
+    .admin-center-panel,
+    .admin-right-panel {
+        padding: 15px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .delete-btn {
+        margin-left: 0;
+    }
+    
+    .admin-title {
+        display: none;
+    }
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado Condell</title>
+    <title>Mercado Condell - Sitio de Prueba</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://api.fontshare.com/v2/css?f[]=author@400,700&display=swap" rel="stylesheet">
 </head>
@@ -22,6 +22,11 @@
     <button id="bpToggle" class="bp-toggle hidden" onclick="toggleBpMarkers()">BP</button>
     
     <div class="main-container">
+        <!-- Test Site Banner -->
+        <div class="test-banner">
+            🧪 SITIO DE PRUEBA - Los cambios se pueden hacer desde el <a href="admin.html">Panel de Administración</a>
+        </div>
+        
         <!-- Header Section -->
         <header class="header">
             <div class="header-left">
@@ -41,6 +46,7 @@
                         <a href="#como-llegar" class="menu-item">Cómo llegar</a>
                         <a href="#contacto" class="menu-item">Contacto</a>
                         <a href="admin.html" class="menu-item admin-link">Admin</a>
+                        <a href="index.html" class="menu-item">Sitio Original</a>
                     </div>
                 </div>
             </div>
@@ -191,8 +197,8 @@
             button.classList.toggle('active');
         }
 
-        // Store data with categories
-        const storeData = {
+        // Store data with categories - Load from localStorage or use defaults
+        let storeData = JSON.parse(localStorage.getItem('storeData')) || {
             1: {
                 name: "CAFÉ MERCADO",
                 category: "alimentos",
