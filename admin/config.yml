@@ -1,8 +1,9 @@
 backend:
   name: git-gateway
-  branch: main # Branch a utilizar
+  branch: main
+  repo: fjsantel/MERCADOCONDELL
 
-# For GitHub Pages, we need this additional configuration
+# Site configuration
 site_url: https://fjsantel.github.io/MERCADOCONDELL
 display_url: https://fjsantel.github.io/MERCADOCONDELL
 
