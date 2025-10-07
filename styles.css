@@ -293,7 +293,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Arrow for tooltip */
+/* Arrow for tooltip - default (top center) */
 .tooltip::after {
     content: "";
     position: absolute;
@@ -302,6 +302,39 @@ body {
     transform: translateX(-50%);
     border: 6px solid transparent;
     border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Tooltip positioned to the right (for left edge circles) */
+.tooltip.tooltip-right {
+    left: calc(100% + 10px);
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.tooltip.tooltip-right::after {
+    top: 50%;
+    left: auto;
+    right: 100%;
+    transform: translateY(-50%);
+    border-top-color: transparent;
+    border-right-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Tooltip positioned to the left (for right edge circles) */
+.tooltip.tooltip-left {
+    right: calc(100% + 10px);
+    left: auto;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.tooltip.tooltip-left::after {
+    top: 50%;
+    right: auto;
+    left: 100%;
+    transform: translateY(-50%);
+    border-top-color: transparent;
+    border-left-color: rgba(0, 0, 0, 0.9);
 }
 
 /* Show tooltip on hover */

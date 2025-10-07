@@ -422,9 +422,39 @@
             window.addEventListener('touchstart', function() {
                 isTouchDevice = true;
             }, { once: true });
-            
+
+            // Function to position tooltips based on circle location
+            function positionTooltip(circle) {
+                const tooltip = circle.querySelector('.tooltip');
+                if (!tooltip) return;
+
+                const mapSection = document.querySelector('.map-section');
+                const circleRect = circle.getBoundingClientRect();
+                const mapRect = mapSection.getBoundingClientRect();
+
+                // Calculate circle position relative to map
+                const circleLeft = circleRect.left - mapRect.left;
+                const circleRight = mapRect.right - circleRect.right;
+
+                // Remove previous positioning classes
+                tooltip.classList.remove('tooltip-left', 'tooltip-right');
+
+                // If circle is on the left edge (less than 20% from left)
+                if (circleLeft < mapRect.width * 0.2) {
+                    tooltip.classList.add('tooltip-right');
+                }
+                // If circle is on the right edge (less than 20% from right)
+                else if (circleRight < mapRect.width * 0.2) {
+                    tooltip.classList.add('tooltip-left');
+                }
+                // Otherwise, keep default top-center position
+            }
+
             circles.forEach(circle => {
                 const storeNumber = parseInt(circle.textContent);
+
+                // Position tooltip on page load
+                positionTooltip(circle);
                 
                 // Mouse events for desktop and tablet (hover effects only)
                 circle.addEventListener('mouseenter', () => {
@@ -432,6 +462,8 @@
                         // Show hover info but don't change selection
                         updateStoreInfo(storeNumber);
                         circle.classList.add('hover');
+                        // Reposition tooltip in case of window resize
+                        positionTooltip(circle);
                     }
                 });
 
@@ -448,18 +480,20 @@
                 circle.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    
+
                     // Update the selected store
                     selectedStore = storeNumber;
-                    
+
                     // Remove active class from all circles
                     circles.forEach(c => {
                         c.classList.remove('active');
                         c.classList.remove('hover');
                     });
-                    
+
                     // Add active class to clicked circle
                     circle.classList.add('active');
+                    // Reposition tooltip before showing
+                    positionTooltip(circle);
                     updateStoreInfo(storeNumber);
                 });
 
@@ -467,21 +501,23 @@
                 circle.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    
+
                     // Mark as touch device
                     isTouchDevice = true;
-                    
+
                     // Update the selected store
                     selectedStore = storeNumber;
-                    
+
                     // Remove active class from all circles
                     circles.forEach(c => {
                         c.classList.remove('active');
                         c.classList.remove('hover');
                     });
-                    
+
                     // Add active class to touched circle
                     circle.classList.add('active');
+                    // Reposition tooltip before showing
+                    positionTooltip(circle);
                     updateStoreInfo(storeNumber);
                 });
                 
@@ -495,6 +531,15 @@
             selectedStore = 1;
             updateStoreInfo(1);
             document.querySelector('.map-circle.circle-1').classList.add('active');
+
+            // Reposition tooltips on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    circles.forEach(circle => positionTooltip(circle));
+                }, 200);
+            });
 
             // Close category dropdown when clicking outside
             document.addEventListener('click', function(event) {
