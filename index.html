@@ -201,6 +201,22 @@
         </section>
     </div>
 
+    <!-- Category Filter Popup Modal -->
+    <div class="category-popup-overlay" id="categoryPopup">
+        <div class="category-popup">
+            <div class="category-popup-header">
+                <div>
+                    <h2 class="category-popup-title" id="popupCategoryName">Categoría</h2>
+                    <p class="category-popup-subtitle" id="popupStoreCount">0 tiendas encontradas</p>
+                </div>
+                <button class="category-popup-close" onclick="closeCategoryPopup()">✕</button>
+            </div>
+            <div class="category-popup-content" id="popupStoreList">
+                <!-- Store cards will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleMenu() {
             const dropdown = document.getElementById('menuDropdown');
@@ -272,6 +288,104 @@
             'hogar': 'Hogar',
             'servicios': 'Servicios'
         };
+
+        // Function to open category popup
+        function openCategoryPopup(categoryName, stores) {
+            const popup = document.getElementById('categoryPopup');
+            const popupTitle = document.getElementById('popupCategoryName');
+            const popupCount = document.getElementById('popupStoreCount');
+            const popupList = document.getElementById('popupStoreList');
+
+            // Set category name and count
+            popupTitle.textContent = categoryName;
+            popupCount.textContent = `${stores.length} tienda${stores.length !== 1 ? 's' : ''} encontrada${stores.length !== 1 ? 's' : ''}`;
+
+            // Clear previous content
+            popupList.innerHTML = '';
+
+            if (stores.length === 0) {
+                popupList.innerHTML = '<div class="category-popup-empty">No se encontraron tiendas en esta categoría</div>';
+            } else {
+                // Create store cards
+                stores.forEach(store => {
+                    const card = document.createElement('div');
+                    card.className = 'category-store-card';
+                    card.onclick = () => {
+                        closeCategoryPopup();
+                        selectStoreOnMap(store.number);
+                    };
+
+                    let linksHTML = '';
+                    if (store.instagram) {
+                        linksHTML += `<a href="${store.instagram}" target="_blank" class="category-store-link" onclick="event.stopPropagation()">📷 Instagram</a>`;
+                    }
+                    if (store.website) {
+                        linksHTML += `<a href="${store.website}" target="_blank" class="category-store-link" onclick="event.stopPropagation()">🌐 Sitio Web</a>`;
+                    }
+                    if (store.whatsapp) {
+                        linksHTML += `<a href="https://wa.me/${store.whatsapp}" target="_blank" class="category-store-link" onclick="event.stopPropagation()">💬 WhatsApp</a>`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="category-store-header">
+                            <div class="category-store-number">${store.number}</div>
+                            <h3 class="category-store-name">${store.name}</h3>
+                        </div>
+                        <p class="category-store-description">${store.description}</p>
+                        ${linksHTML ? `<div class="category-store-links">${linksHTML}</div>` : ''}
+                    `;
+
+                    popupList.appendChild(card);
+                });
+            }
+
+            // Show popup
+            popup.classList.add('show');
+        }
+
+        // Function to close category popup
+        function closeCategoryPopup() {
+            const popup = document.getElementById('categoryPopup');
+            popup.classList.remove('show');
+        }
+
+        // Function to select a store on the map
+        function selectStoreOnMap(storeNumber) {
+            const circles = document.querySelectorAll('.map-circle');
+            const targetCircle = document.querySelector(`.map-circle.circle-${storeNumber}`);
+
+            if (targetCircle) {
+                // Remove active class from all circles
+                circles.forEach(c => {
+                    c.classList.remove('active');
+                    c.classList.remove('hover');
+                });
+
+                // Add active class to target circle
+                targetCircle.classList.add('active');
+                updateStoreInfo(storeNumber);
+
+                // Scroll to map section
+                document.querySelector('.map-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Close popup when clicking on overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('categoryPopup');
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    closeCategoryPopup();
+                }
+            });
+
+            // Close popup with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeCategoryPopup();
+                }
+            });
+        });
 
         // Function to update store information
         function updateStoreInfo(storeNumber) {
@@ -358,7 +472,7 @@
         // Function to perform category filtering
         function performCategoryFilter(selectedCategory) {
             const circles = document.querySelectorAll('.map-circle');
-            
+
             // Remove all category highlights first
             circles.forEach(circle => {
                 circle.classList.remove('category-highlight');
@@ -370,7 +484,7 @@
                 document.getElementById('storeNumberCircle').textContent = '1';
                 document.getElementById('storeName').textContent = 'MERCADO CONDELL';
                 document.getElementById('storeDescription').textContent = 'Selecciona un número en el mapa para ver la información de la tienda.';
-                
+
                 // Mobile version
                 document.getElementById('storeNumberCircleMobile').textContent = '1';
                 document.getElementById('storeNameMobile').textContent = 'MERCADO CONDELL';
@@ -380,14 +494,19 @@
 
             // Find stores that match the category
             const matchingStores = [];
-            const storeNames = [];
-            
+
             for (let storeNumber in storeData) {
                 const store = storeData[storeNumber];
                 if (store.category === selectedCategory) {
-                    matchingStores.push(storeNumber);
-                    storeNames.push(`${storeNumber}. ${store.name}`);
-                    
+                    matchingStores.push({
+                        number: storeNumber,
+                        name: store.name,
+                        description: store.description,
+                        instagram: store.instagram,
+                        website: store.website,
+                        whatsapp: store.whatsapp
+                    });
+
                     // Highlight matching circles
                     const circle = document.querySelector(`.map-circle.circle-${storeNumber}`);
                     if (circle) {
@@ -396,20 +515,14 @@
                 }
             }
 
-            // Update display with category results
+            // Sort stores by number
+            matchingStores.sort((a, b) => parseInt(a.number) - parseInt(b.number));
+
+            // Get category display name
             const categoryDisplayName = categoryNames[selectedCategory] || selectedCategory;
-            const storeListText = storeNames.join(', ');
-            const resultText = `Categoría: ${categoryDisplayName}\\n\\nTiendas encontradas: ${storeListText}`;
 
-            // Update desktop version
-            document.getElementById('storeNumberCircle').textContent = matchingStores.length;
-            document.getElementById('storeName').textContent = categoryDisplayName.toUpperCase();
-            document.getElementById('storeDescription').textContent = resultText;
-
-            // Update mobile version
-            document.getElementById('storeNumberCircleMobile').textContent = matchingStores.length;
-            document.getElementById('storeNameMobile').textContent = categoryDisplayName.toUpperCase();
-            document.getElementById('storeDescriptionMobile').textContent = resultText;
+            // Open popup with filtered stores
+            openCategoryPopup(categoryDisplayName, matchingStores);
         }
 
         // Initialize page after data is loaded
