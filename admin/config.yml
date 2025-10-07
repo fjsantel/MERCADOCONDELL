@@ -4,8 +4,8 @@ backend:
   repo: fjsantel/MERCADOCONDELL
 
 # Site configuration
-site_url: https://fjsantel.github.io/MERCADOCONDELL
-display_url: https://fjsantel.github.io/MERCADOCONDELL
+site_url: https://mercadocondell.netlify.app
+display_url: https://mercadocondell.netlify.app
 
 # Configuración de archivos
 media_folder: "assets" # Media files stored in the assets folder
