@@ -4,7 +4,7 @@ let storeData = {};
 // Load store data from CMS JSON file
 async function loadStoreData() {
     try {
-        const response = await fetch('_data/negocios.json');
+        const response = await fetch('data/negocios.json');
         const data = await response.json();
         
         // Convert array format from CMS to object format for website

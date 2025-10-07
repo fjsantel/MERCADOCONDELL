@@ -1,0 +1,124 @@
+{
+  "negocios": [
+    {
+      "numero": 1,
+      "nombre": "LA CAFETERÍA ",
+      "categoria": "alimentos",
+      "descripcion": "Acogedora cafetería especializada en café de especialidad y repostería artesanal. Ideal para comenzar el día o tomar un descanso con productos frescos y de origen local."
+    },
+    {
+      "numero": 2,
+      "nombre": "DELICIAS DEL MAR",
+      "categoria": "alimentos",
+      "descripcion": "Restaurante de mariscos frescos que ofrece lo mejor de la costa chilena. Especialidad en ceviches, empanadas de mariscos y pescados a la plancha con vista al mercado."
+    },
+    {
+      "numero": 3,
+      "nombre": "FRUTAS Y VERDURAS EL HUERTO",
+      "categoria": "alimentos",
+      "descripcion": "Puesto de frutas y verduras frescas seleccionadas diariamente desde los mejores campos de la región. Productos orgánicos y de temporada a precios accesibles."
+    },
+    {
+      "numero": 4,
+      "nombre": "CARNES SELECTAS DON JOSÉ",
+      "categoria": "alimentos",
+      "descripcion": "Carnicería tradicional con más de 30 años de experiencia. Ofrece cortes premium, embutidos caseros y preparaciones especiales para asados y ocasiones especiales."
+    },
+    {
+      "numero": 5,
+      "nombre": "PANADERÍA ARTESANAL",
+      "categoria": "alimentos",
+      "descripcion": "Pan recién horneado cada mañana con recetas tradicionales y técnicas artesanales. Especialidad en pan amasado, sopaipillas y empanadas horneadas."
+    },
+    {
+      "numero": 6,
+      "nombre": "ESPECIAS DEL MUNDO",
+      "categoria": "alimentos",
+      "descripcion": "Tienda especializada en especias, hierbas y condimentos de todas partes del mundo. Productos únicos para dar sabor auténtico a tus preparaciones culinarias."
+    },
+    {
+      "numero": 7,
+      "nombre": "LÁCTEOS LA GRANJA",
+      "categoria": "alimentos",
+      "descripcion": "Productos lácteos frescos directamente desde productores locales. Quesos artesanales, leche fresca, mantequilla y yogures naturales sin aditivos artificiales."
+    },
+    {
+      "numero": 8,
+      "nombre": "FLORES Y PLANTAS JARDÍN",
+      "categoria": "decoracion",
+      "descripcion": "Floristería con gran variedad de flores frescas y plantas ornamentales. Arreglos para ocasiones especiales y asesoría en jardinería doméstica."
+    },
+    {
+      "numero": 9,
+      "nombre": "ROPA Y ACCESORIOS ESTILO",
+      "categoria": "ropa",
+      "descripcion": "Boutique de moda con prendas casuales y elegantes para toda la familia. Accesorios únicos y ropa de diseñadores locales con estilo contemporáneo."
+    },
+    {
+      "numero": 10,
+      "nombre": "LIBRERÍA Y PAPELERÍA CULTURAL",
+      "categoria": "cultura",
+      "descripcion": "Espacio dedicado a la cultura con libros, revistas, material de oficina y artículos de papelería. Punto de encuentro para amantes de la lectura y la escritura."
+    },
+    {
+      "numero": 11,
+      "nombre": "JUGOS NATURALES VITA",
+      "categoria": "alimentos",
+      "descripcion": "Bar de jugos y batidos naturales preparados al momento con frutas frescas. Opciones detox, energizantes y smoothies nutritivos para una vida saludable."
+    },
+    {
+      "numero": 12,
+      "nombre": "ARTESANÍAS LOCALES",
+      "categoria": "artesanias",
+      "descripcion": "Exposición y venta de artesanías tradicionales chilenas realizadas por artesanos locales. Productos únicos que reflejan la cultura y tradición de nuestra región."
+    },
+    {
+      "numero": 13,
+      "nombre": "ELECTRÓNICOS TECH STORE",
+      "categoria": "tecnologia",
+      "descripcion": "Tienda de tecnología con los últimos dispositivos, accesorios y servicio técnico especializado. Atención personalizada y garantía en todos los productos."
+    },
+    {
+      "numero": 14,
+      "nombre": "PERFUMERÍA ESENCIA",
+      "categoria": "belleza",
+      "descripcion": "Productos de belleza y cuidado personal de marcas reconocidas. Perfumes, cosméticos y tratamientos para el cuidado de la piel con asesoría especializada."
+    },
+    {
+      "numero": 15,
+      "nombre": "JUGUETERÍA FANTASÍA",
+      "categoria": "juguetes",
+      "descripcion": "Mundo mágico lleno de juguetes educativos, didácticos y de entretenimiento para niños de todas las edades. Productos que estimulan la creatividad y el aprendizaje."
+    },
+    {
+      "numero": 16,
+      "nombre": "FERRETERÍA EL MARTILLO",
+      "categoria": "hogar",
+      "descripcion": "Herramientas, materiales de construcción y artículos para el hogar. Todo lo necesario para reparaciones domésticas y proyectos de mejoramiento del hogar."
+    },
+    {
+      "numero": 17,
+      "nombre": "ANTIGÜEDADES Y VINTAGE",
+      "categoria": "decoracion",
+      "descripcion": "Colección de objetos antiguos, muebles vintage y artículos de colección. Tesoros únicos con historia que agregan carácter especial a cualquier espacio."
+    },
+    {
+      "numero": 18,
+      "nombre": "COMIDA INTERNACIONAL",
+      "categoria": "alimentos",
+      "descripcion": "Restaurante que ofrece sabores del mundo con platos típicos de diferentes culturas. Fusión gastronómica que celebra la diversidad culinaria internacional."
+    },
+    {
+      "numero": 19,
+      "nombre": "SERVICIOS GENERALES",
+      "categoria": "servicios",
+      "descripcion": "Centro de servicios múltiples que incluye cobro de cuentas, envío de encomiendas, fotocopias y trámites diversos. Soluciones prácticas para el día a día."
+    },
+    {
+      "numero": 20,
+      "nombre": "MERCADO NOCTURNO",
+      "categoria": "musica",
+      "descripcion": "Espacio gastronómico que cobra vida al atardecer con food trucks, música en vivo y ambiente bohemio. Ideal para disfrutar de la noche con sabores únicos y entretenimiento."
+    }
+  ]
+}

@@ -18,7 +18,7 @@ collections:
     files:
       - name: "general"
         label: "Configuración General"
-        file: "_data/config.yml"
+        file: "data/config.yml"
         fields:
           - {label: "Título del Sitio", name: "titulo", widget: "string"}
           - {label: "Descripción", name: "descripcion", widget: "text"}
@@ -27,7 +27,7 @@ collections:
           
       - name: "negocios_data"
         label: "Editar Negocios"
-        file: "_data/negocios.json" 
+        file: "data/negocios.json" 
         fields:
           - name: "negocios"
             label: "Lista de Negocios del Mercado"
