@@ -30,6 +30,9 @@ async function loadStoreData() {
     
     // Initialize the map after data is loaded
     initializeMap();
+
+    // Update tooltips with store names
+    updateTooltips();
 }
 
 // Default data fallback
@@ -62,4 +65,14 @@ function loadDefaultData() {
         }
         // Add more default data as needed...
     };
+}
+
+// Function to update tooltips with store names
+function updateTooltips() {
+    Object.keys(storeData).forEach(storeNumber => {
+        const tooltip = document.getElementById(`tooltip-${storeNumber}`);
+        if (tooltip && storeData[storeNumber]) {
+            tooltip.textContent = storeData[storeNumber].name;
+        }
+    });
 }
