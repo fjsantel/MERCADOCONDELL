@@ -1,0 +1,126 @@
+ESTRUCTURA CMS Y PRECIOS - MERCADO CONDELL
+================================================
+
+SITUACIÓN ACTUAL (INCLUIDO EN PRECIO BASE)
+------------------------------------------
+✅ CMS de Negocios/Tiendas
+   - Editar nombres, categorías, descripciones
+   - 20 tiendas máximo
+   - Panel de administración básico
+
+
+AMPLIACIONES FUTURAS (COSTOS ADICIONALES)
+=========================================
+
+1. TIENDAS AVANZADAS (+$400.000)
+   -------------------------------
+   - Fotos por tienda (galería)
+   - Links/URLs de contacto
+   - Horarios de atención
+   - Redes sociales por tienda
+   - Información de contacto (teléfono, email)
+
+2. SECCIÓN EVENTOS (+$350.000)
+   ----------------------------
+   - Crear/editar eventos
+   - Fechas y horarios
+   - Descripciones de eventos
+   - Fotos de eventos
+   - Categorización de eventos
+
+3. SECCIÓN NOTICIAS (+$250.000)
+   -----------------------------
+   - Publicar noticias del mercado
+   - Fechas de publicación
+   - Fotos de noticias
+   - Categorías de noticias
+
+4. GALERÍA GENERAL (+$200.000)
+   ----------------------------
+   - Subir fotos del mercado
+   - Organizar por categorías
+   - Descripciones de fotos
+
+5. INFORMACIÓN GENERAL (+$150.000)
+   --------------------------------
+   - Horarios del mercado
+   - Información de contacto
+   - Historia del mercado
+   - Como llegar/direcciones
+
+6. PAQUETE COMPLETO (+$800.000)
+   ----------------------------
+   - Todas las secciones anteriores
+   - Descuento por paquete completo
+   - Capacitación extendida
+
+
+FLUJO DE IMPLEMENTACIÓN
+======================
+
+FASE 1: PLANIFICACIÓN
+- Reunión para definir secciones necesarias
+- Cotización específica según necesidades
+- Aprobación del cliente
+
+FASE 2: DESARROLLO
+- Configuración de nuevas colecciones en CMS
+- Modificación de templates HTML
+- Pruebas de funcionamiento
+
+FASE 3: ENTREGA
+- Capacitación en nuevas secciones
+- Documentación de uso
+- Soporte inicial 1 semana
+
+FASE 4: MANTENIMIENTO (OPCIONAL)
+- Soporte mensual: $50.000/mes
+- Actualizaciones de contenido
+- Backup y seguridad
+
+
+ESTRATEGIA DE VENTA
+==================
+
+REGALO INICIAL (VALOR $500.000):
+"Te incluyo sin costo el CMS básico de tiendas, que normalmente cobra $500.000. 
+Es un regalo por ser mi primer cliente con esta tecnología."
+
+VENTAS FUTURAS:
+"Cuando quieras agregar más funcionalidades como eventos, fotos, o noticias, 
+cada sección tiene su costo según la complejidad."
+
+BENEFICIOS DEL CMS:
+- Cliente autónomo para editar contenido
+- Ahorro en costos futuros de mantención
+- Sitio web siempre actualizado
+- Aspecto profesional y moderno
+
+
+NOTAS TÉCNICAS
+=============
+
+- Cada sección CMS requiere:
+  * Configuración en admin/config.yml
+  * Modificación de archivos HTML
+  * Pruebas de funcionamiento
+  * Documentación de uso
+
+- Tiempo estimado por sección: 1-2 días
+- Máximo 5 secciones CMS por sitio (rendimiento)
+- Backup automático en GitHub
+
+
+RECOMENDACIONES
+==============
+
+1. Vende el CMS básico como valor agregado GRATIS
+2. Cobra por ampliaciones según complejidad
+3. Ofrece paquetes con descuento
+4. Incluye capacitación en cada ampliación
+5. Considera mantenimiento mensual opcional
+
+===============================================
+Documento creado: Septiembre 2024
+Cliente: Mercado Condell
+Desarrollador: Francisco Santelices

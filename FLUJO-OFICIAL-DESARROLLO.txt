@@ -1,0 +1,133 @@
+FLUJO OFICIAL DE DESARROLLO WEB CON CMS GRATUITO
+==============================================
+
+🎯 OBJETIVO: Cliente paga SOLO dominio, sin hosting
+
+FASE 1: DESARROLLO (DESARROLLADOR)
+==================================
+1. Crear repositorio GitHub del cliente
+2. Desarrollar en VSCode con Claude Code
+3. Configurar CMS (Netlify CMS)
+4. Conectar GitHub → Netlify (solo para CMS)
+5. Probar funcionamiento completo
+6. Entregar acceso al cliente
+
+FASE 2: DOMINIO Y DNS (CLIENTE/DESARROLLADOR)
+============================================
+1. Cliente compra dominio .cl (~$15.000/año)
+2. Configurar Cloudflare (GRATIS):
+   - Transferir DNS a Cloudflare
+   - Configurar registros DNS:
+     * CNAME www → usuario.github.io
+     * A @ → IPs de GitHub Pages
+   - Activar proxy (nube naranja)
+3. En GitHub: Settings → Pages → Custom domain
+4. Crear archivo CNAME en repositorio
+
+FASE 3: FUNCIONAMIENTO FINAL
+============================
+✅ Cliente edita contenido en: sudominio.cl/admin/
+✅ Cambios se guardan en: GitHub (automático)
+✅ Sitio se actualiza en: sudominio.cl (GitHub Pages)
+✅ Hosting: 100% GRATUITO
+✅ Solo paga: Dominio ($15k/año)
+
+ARQUITECTURA TÉCNICA
+====================
+Desarrollo: VSCode + Claude Code
+    ↓
+GitHub Repo (cliente)
+    ↓ 
+Netlify CMS (solo admin panel)
+    ↓
+GitHub Pages (hosting gratuito)
+    ↓
+Cloudflare (DNS + CDN gratuito)
+    ↓
+Dominio .cl (único costo)
+
+BENEFICIOS PARA EL CLIENTE
+=========================
+💰 Hosting gratuito de por vida
+🚀 Sitio rápido con Cloudflare CDN
+🔒 SSL automático y seguridad
+📱 CMS fácil de usar desde celular
+📊 Analytics básicos gratuitos
+🔄 Backups automáticos en GitHub
+
+COSTOS TOTALES
+===============
+DESARROLLO:
+- Sitio básico: $2.800.000 + IVA
+- CMS básico: INCLUIDO (regalo $500k)
+- Configuración dominio: INCLUIDO
+
+CLIENTE ANUAL:
+- Dominio .cl: $15.000/año
+- Hosting: $0/año 
+- Mantenimiento: $0/año (opcional $50k/mes)
+
+AMPLIACIONES FUTURAS:
+- Tiendas avanzadas: +$400.000
+- Eventos: +$350.000  
+- Noticias: +$250.000
+- Paquete completo: +$800.000
+
+VENTAJAS COMPETITIVAS
+====================
+✅ Cliente independiente para contenido
+✅ Sin costos recurrentes obligatorios
+✅ Tecnología moderna y profesional  
+✅ Escalable según necesidades
+✅ Respaldos automáticos
+✅ Velocidad optimizada
+
+FLUJO DE EDICIÓN (CLIENTE)
+=========================
+1. Ir a sudominio.cl/admin/
+2. Login con credenciales
+3. Editar contenido deseado
+4. Guardar cambios
+5. Ver actualización en sudominio.cl
+6. ¡Listo! Sin costos adicionales
+
+SOPORTE TÉCNICO
+===============
+- Capacitación inicial: INCLUIDA
+- Documentación: INCLUIDA
+- Soporte 1ra semana: INCLUIDO
+- Soporte mensual: OPCIONAL ($50k/mes)
+
+DIFERENCIADORES DE MERCADO
+=========================
+🏆 "Tu sitio web sin costos de hosting"
+🏆 "Edita tu contenido desde cualquier dispositivo"
+🏆 "Tecnología profesional a precio accesible"
+🏆 "Backups automáticos, nunca perderás información"
+🏆 "Velocidad optimizada con CDN mundial"
+
+REQUISITOS DEL CLIENTE
+=====================
+- Cuenta Gmail (para acceso CMS)
+- Compra dominio .cl
+- Capacitación 1 hora (incluida)
+
+TIEMPO DE IMPLEMENTACIÓN
+=======================
+- Desarrollo: 5-7 días
+- Configuración dominio: 1 día  
+- Capacitación: 1 hora
+- Total: 1 semana
+
+GARANTÍAS
+=========
+- Funcionamiento 30 días
+- Corrección errores sin costo
+- Soporte configuración inicial
+- Documentación completa
+
+==============================
+Documento: Flujo Oficial v1.0
+Fecha: Septiembre 2024
+Desarrollador: Francisco Santelices
+==============================
