@@ -38,6 +38,9 @@ collections:
               - {label: "Nombre", name: "nombre", widget: "string"}
               - {label: "Categoría", name: "categoria", widget: "select", options: ["alimentos", "ropa", "musica", "decoracion", "cultura", "artesanias", "tecnologia", "belleza", "juguetes", "hogar", "servicios"]}
               - {label: "Descripción", name: "descripcion", widget: "text", rows: 4}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false, hint: "URL completa de Instagram (ej: https://instagram.com/usuario)"}
+              - {label: "Sitio Web", name: "website", widget: "string", required: false, hint: "URL completa del sitio web (ej: https://www.sitio.com)"}
+              - {label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Número de WhatsApp con código de país sin + (ej: 56912345678)"}
 
 # Configuración de autenticación y permisos
 # publish_mode: editorial_workflow # Disabled for direct publishing

@@ -261,7 +261,10 @@
                     storeData[negocio.numero] = {
                         name: negocio.nombre,
                         category: negocio.categoria,
-                        description: negocio.descripcion
+                        description: negocio.descripcion,
+                        instagram: negocio.instagram || null,
+                        website: negocio.website || null,
+                        whatsapp: negocio.whatsapp || null
                     };
                 });
                 
