@@ -311,6 +311,13 @@ body {
     transform: translateX(-50%) translateY(-5px);
 }
 
+/* Show tooltip when circle is active (clicked/touched) */
+.map-circle.active .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
 /* Map circle hover effects - Works on all versions */
 .map-circle:hover {
     background-color: #F4B609;
