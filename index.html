@@ -53,64 +53,64 @@
             </div>
             <!-- Map circles for small mobile -->
             <div class="map-circle circle-1">1
-                <div class="tooltip" id="tooltip-1">Tienda 1</div>
+                <div class="tooltip" id="tooltip-1">Cargando...</div>
             </div>
             <div class="map-circle circle-2">2
-                <div class="tooltip" id="tooltip-2">Tienda 2</div>
+                <div class="tooltip" id="tooltip-2">Cargando...</div>
             </div>
             <div class="map-circle circle-3">3
-                <div class="tooltip" id="tooltip-3">Tienda 3</div>
+                <div class="tooltip" id="tooltip-3">Cargando...</div>
             </div>
             <div class="map-circle circle-4">4
-                <div class="tooltip" id="tooltip-4">Tienda 4</div>
+                <div class="tooltip" id="tooltip-4">Cargando...</div>
             </div>
             <div class="map-circle circle-5">5
-                <div class="tooltip" id="tooltip-5">Tienda 5</div>
+                <div class="tooltip" id="tooltip-5">Cargando...</div>
             </div>
             <div class="map-circle circle-6">6
-                <div class="tooltip" id="tooltip-6">Tienda 6</div>
+                <div class="tooltip" id="tooltip-6">Cargando...</div>
             </div>
             <div class="map-circle circle-7">7
-                <div class="tooltip" id="tooltip-7">Tienda 7</div>
+                <div class="tooltip" id="tooltip-7">Cargando...</div>
             </div>
             <div class="map-circle circle-8">8
-                <div class="tooltip" id="tooltip-8">FLORES Y PLANTAS JARDÍN</div>
+                <div class="tooltip" id="tooltip-8">Cargando...</div>
             </div>
             <div class="map-circle circle-9">9
-                <div class="tooltip" id="tooltip-9">Tienda 9</div>
+                <div class="tooltip" id="tooltip-9">Cargando...</div>
             </div>
             <div class="map-circle circle-10">10
-                <div class="tooltip" id="tooltip-10">Tienda 10</div>
+                <div class="tooltip" id="tooltip-10">Cargando...</div>
             </div>
             <div class="map-circle circle-11">11
-                <div class="tooltip" id="tooltip-11">Tienda 11</div>
+                <div class="tooltip" id="tooltip-11">Cargando...</div>
             </div>
             <div class="map-circle circle-12">12
-                <div class="tooltip" id="tooltip-12">Tienda 12</div>
+                <div class="tooltip" id="tooltip-12">Cargando...</div>
             </div>
             <div class="map-circle circle-13">13
-                <div class="tooltip" id="tooltip-13">Tienda 13</div>
+                <div class="tooltip" id="tooltip-13">Cargando...</div>
             </div>
             <div class="map-circle circle-14">14
-                <div class="tooltip" id="tooltip-14">Tienda 14</div>
+                <div class="tooltip" id="tooltip-14">Cargando...</div>
             </div>
             <div class="map-circle circle-15">15
-                <div class="tooltip" id="tooltip-15">Tienda 15</div>
+                <div class="tooltip" id="tooltip-15">Cargando...</div>
             </div>
             <div class="map-circle circle-16">16
-                <div class="tooltip" id="tooltip-16">Tienda 16</div>
+                <div class="tooltip" id="tooltip-16">Cargando...</div>
             </div>
             <div class="map-circle circle-17">17
-                <div class="tooltip" id="tooltip-17">Tienda 17</div>
+                <div class="tooltip" id="tooltip-17">Cargando...</div>
             </div>
             <div class="map-circle circle-18">18
-                <div class="tooltip" id="tooltip-18">Tienda 18</div>
+                <div class="tooltip" id="tooltip-18">Cargando...</div>
             </div>
             <div class="map-circle circle-19">19
-                <div class="tooltip" id="tooltip-19">Tienda 19</div>
+                <div class="tooltip" id="tooltip-19">Cargando...</div>
             </div>
             <div class="map-circle circle-20">20
-                <div class="tooltip" id="tooltip-20">Tienda 20</div>
+                <div class="tooltip" id="tooltip-20">Cargando...</div>
             </div>
         </section>
 
@@ -145,6 +145,7 @@
                     <div class="store-description">
                         <p id="storeDescription">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
+                    <button id="verMasBtn" class="ver-mas-button" onclick="openStoreDetailPopup()" style="display: none;">VER MÁS</button>
                 </div>
                 <div class="store-info-right">
                     <div class="store-info-right-top">
@@ -170,6 +171,7 @@
                     <div class="store-description mobile-description">
                         <p id="storeDescriptionMobile">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
+                    <button id="verMasBtnMobile" class="ver-mas-button mobile" onclick="openStoreDetailPopup()" style="display: none;">VER MÁS</button>
                     <div class="category-filter-container mobile-category-filter">
                         <button id="categoryFilterBtnMobile" class="category-filter-button mobile" onclick="toggleCategoryFilter()">
                             FILTRAR CATEGORÍAS
@@ -213,6 +215,53 @@
             </div>
             <div class="category-popup-content" id="popupStoreList">
                 <!-- Store cards will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Store Detail Popup Modal -->
+    <div class="store-detail-overlay" id="storeDetailPopup">
+        <div class="store-detail-popup">
+            <div class="store-detail-header">
+                <div class="store-detail-header-info">
+                    <div class="store-detail-number" id="detailStoreNumber">1</div>
+                    <h2 class="store-detail-title" id="detailStoreName">Nombre de la Tienda</h2>
+                </div>
+                <button class="store-detail-close" onclick="closeStoreDetailPopup()">✕</button>
+            </div>
+            <div class="store-detail-content">
+                <!-- Photo Slider -->
+                <div class="photo-slider">
+                    <div class="slider-container" id="sliderContainer">
+                        <div class="slider-image">FOTO 1</div>
+                        <div class="slider-image">FOTO 2</div>
+                        <div class="slider-image">FOTO 3</div>
+                    </div>
+                    <button class="slider-button prev" onclick="previousSlide()">‹</button>
+                    <button class="slider-button next" onclick="nextSlide()">›</button>
+                    <div class="slider-dots" id="sliderDots">
+                        <div class="slider-dot active" onclick="goToSlide(0)"></div>
+                        <div class="slider-dot" onclick="goToSlide(1)"></div>
+                        <div class="slider-dot" onclick="goToSlide(2)"></div>
+                    </div>
+                </div>
+
+                <!-- Store Information -->
+                <div class="store-detail-info">
+                    <div class="store-detail-section">
+                        <h3 class="store-detail-section-title">📝 Descripción</h3>
+                        <p class="store-detail-description" id="detailStoreDescription">
+                            Descripción de la tienda...
+                        </p>
+                    </div>
+
+                    <div class="store-detail-section" id="detailLinksSection">
+                        <h3 class="store-detail-section-title">🔗 Enlaces y Contacto</h3>
+                        <div class="store-detail-links" id="detailStoreLinks">
+                            <!-- Links will be inserted here dynamically -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -264,7 +313,10 @@
                         description: negocio.descripcion,
                         instagram: negocio.instagram || null,
                         website: negocio.website || null,
-                        whatsapp: negocio.whatsapp || null
+                        whatsapp: negocio.whatsapp || null,
+                        foto1: negocio.foto1 || null,
+                        foto2: negocio.foto2 || null,
+                        foto3: negocio.foto3 || null
                     };
                 });
                 
@@ -315,7 +367,7 @@
                     card.className = 'category-store-card';
                     card.onclick = () => {
                         closeCategoryPopup();
-                        selectStoreOnMap(store.number);
+                        openStoreDetailPopup(store.number);
                     };
 
                     let linksHTML = '';
@@ -373,19 +425,131 @@
             }
         }
 
+        // Store Detail Popup Variables
+        let currentStoreNumber = null;
+        let currentSlideIndex = 0;
+
+        // Function to open store detail popup
+        function openStoreDetailPopup(storeNumber) {
+            // Use current selected store if no number provided
+            if (!storeNumber) {
+                storeNumber = currentStoreNumber || 1;
+            }
+
+            currentStoreNumber = storeNumber;
+            const store = storeData[storeNumber];
+
+            if (!store) return;
+
+            // Update popup content
+            document.getElementById('detailStoreNumber').textContent = storeNumber;
+            document.getElementById('detailStoreName').textContent = store.name;
+            document.getElementById('detailStoreDescription').textContent = store.description;
+
+            // Update links
+            const linksContainer = document.getElementById('detailStoreLinks');
+            const linksSection = document.getElementById('detailLinksSection');
+            linksContainer.innerHTML = '';
+
+            let hasLinks = false;
+            if (store.instagram) {
+                linksContainer.innerHTML += `<a href="${store.instagram}" target="_blank" class="store-detail-link">📷 Instagram</a>`;
+                hasLinks = true;
+            }
+            if (store.website) {
+                const websiteUrl = store.website.startsWith('http') ? store.website : `https://${store.website}`;
+                linksContainer.innerHTML += `<a href="${websiteUrl}" target="_blank" class="store-detail-link">🌐 Sitio Web</a>`;
+                hasLinks = true;
+            }
+            if (store.whatsapp) {
+                const whatsappNum = store.whatsapp.replace(/\D/g, '');
+                linksContainer.innerHTML += `<a href="https://wa.me/${whatsappNum}" target="_blank" class="store-detail-link">💬 WhatsApp</a>`;
+                hasLinks = true;
+            }
+
+            // Hide links section if no links
+            linksSection.style.display = hasLinks ? 'block' : 'none';
+
+            // Update slider with photos
+            const sliderContainer = document.getElementById('sliderContainer');
+            sliderContainer.innerHTML = '';
+
+            const photos = [store.foto1, store.foto2, store.foto3];
+            photos.forEach((photo, index) => {
+                if (photo) {
+                    sliderContainer.innerHTML += `<img src="${photo}" alt="${store.name} - Foto ${index + 1}" class="slider-image" style="object-fit: cover;">`;
+                } else {
+                    sliderContainer.innerHTML += `<div class="slider-image">FOTO ${index + 1}</div>`;
+                }
+            });
+
+            // Reset slider
+            currentSlideIndex = 0;
+            updateSlider();
+
+            // Show popup
+            const popup = document.getElementById('storeDetailPopup');
+            popup.classList.add('show');
+        }
+
+        // Function to close store detail popup
+        function closeStoreDetailPopup() {
+            const popup = document.getElementById('storeDetailPopup');
+            popup.classList.remove('show');
+        }
+
+        // Slider functions
+        function updateSlider() {
+            const container = document.getElementById('sliderContainer');
+            const dots = document.querySelectorAll('.slider-dot');
+
+            container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                if (index === currentSlideIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function previousSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + 3) % 3;
+            updateSlider();
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % 3;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlider();
+        }
+
         // Close popup when clicking on overlay
         document.addEventListener('DOMContentLoaded', function() {
-            const popup = document.getElementById('categoryPopup');
-            popup.addEventListener('click', function(e) {
-                if (e.target === popup) {
+            const categoryPopup = document.getElementById('categoryPopup');
+            categoryPopup.addEventListener('click', function(e) {
+                if (e.target === categoryPopup) {
                     closeCategoryPopup();
                 }
             });
 
-            // Close popup with Escape key
+            const detailPopup = document.getElementById('storeDetailPopup');
+            detailPopup.addEventListener('click', function(e) {
+                if (e.target === detailPopup) {
+                    closeStoreDetailPopup();
+                }
+            });
+
+            // Close popups with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     closeCategoryPopup();
+                    closeStoreDetailPopup();
                 }
             });
         });
@@ -394,6 +558,9 @@
         function updateStoreInfo(storeNumber) {
             const store = storeData[storeNumber];
             if (!store) return;
+
+            // Save current store number for "Ver Más" button
+            currentStoreNumber = storeNumber;
 
             // Update desktop version
             document.getElementById('storeNumberCircle').textContent = storeNumber;
@@ -404,6 +571,10 @@
             document.getElementById('storeNumberCircleMobile').textContent = storeNumber;
             document.getElementById('storeNameMobile').textContent = store.name;
             document.getElementById('storeDescriptionMobile').textContent = store.description;
+
+            // Show "Ver Más" button
+            document.getElementById('verMasBtn').style.display = 'inline-block';
+            document.getElementById('verMasBtnMobile').style.display = 'block';
         }
 
         // Function to toggle category filter dropdown
@@ -533,6 +704,14 @@
             const circles = document.querySelectorAll('.map-circle');
             let isTouchDevice = false;
             let selectedStore = 1; // Track the currently selected store
+
+            // Update all tooltips with real store names from CMS
+            for (let i = 1; i <= 20; i++) {
+                const tooltip = document.getElementById(`tooltip-${i}`);
+                if (tooltip && storeData[i]) {
+                    tooltip.textContent = storeData[i].name;
+                }
+            }
 
             // Detect if it's a touch device
             window.addEventListener('touchstart', function() {

@@ -41,6 +41,9 @@ collections:
               - {label: "Instagram", name: "instagram", widget: "string", required: false, hint: "URL completa de Instagram (ej: https://instagram.com/usuario)"}
               - {label: "Sitio Web", name: "website", widget: "string", required: false, hint: "URL completa del sitio web (ej: https://www.sitio.com)"}
               - {label: "WhatsApp", name: "whatsapp", widget: "string", required: false, hint: "Número de WhatsApp con código de país sin + (ej: 56912345678)"}
+              - {label: "Foto 1", name: "foto1", widget: "image", required: false, hint: "Primera imagen del slider"}
+              - {label: "Foto 2", name: "foto2", widget: "image", required: false, hint: "Segunda imagen del slider"}
+              - {label: "Foto 3", name: "foto3", widget: "image", required: false, hint: "Tercera imagen del slider"}
 
 # Configuración de autenticación y permisos
 # publish_mode: editorial_workflow # Disabled for direct publishing
