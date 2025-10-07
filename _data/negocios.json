@@ -50,9 +50,11 @@
     },
     {
       "numero": 9,
-      "nombre": "ROPA Y ACCESORIOS ESTILO",
-      "categoria": "ropa",
-      "descripcion": "Boutique de moda con prendas casuales y elegantes para toda la familia. Accesorios únicos y ropa de diseñadores locales con estilo contemporáneo."
+      "nombre": "Esto es infierno",
+      "categoria": "artesanias",
+      "descripcion": "Boutique de moda con prendas casuales y elegantes para toda la familia. Accesorios únicos y ropa de diseñadores locales con estilo contemporáneo.",
+      "website": "www.infierno.com",
+      "whatsapp": "+56989186523"
     },
     {
       "numero": 10,
