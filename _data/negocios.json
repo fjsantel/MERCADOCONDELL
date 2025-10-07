@@ -49,12 +49,15 @@
       "descripcion": "Floristería con gran variedad de flores frescas y plantas ornamentales. Arreglos para ocasiones especiales y asesoría en jardinería doméstica."
     },
     {
-      "numero": 9,
       "nombre": "Esto es infierno",
-      "categoria": "artesanias",
       "descripcion": "Boutique de moda con prendas casuales y elegantes para toda la familia. Accesorios únicos y ropa de diseñadores locales con estilo contemporáneo.",
-      "website": "www.infierno.com",
-      "whatsapp": "+56989186523"
+      "foto1": "/assets/1000121285.png",
+      "foto2": "/assets/1000119971.jpg",
+      "foto3": "/assets/1000119555.jpg",
+      "whatsapp": "+56989186523",
+      "categoria": "artesanias",
+      "website": "www.franciscosantelices.cl",
+      "numero": 9
     },
     {
       "numero": 10,
