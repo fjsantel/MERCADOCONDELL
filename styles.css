@@ -306,7 +306,7 @@ body {
 
 /* Tooltip positioned to the right (for left edge circles) */
 .tooltip.tooltip-right {
-    left: calc(100% + 10px);
+    left: calc(100% + 5px);
     bottom: 50%;
     transform: translateY(50%);
 }
@@ -317,12 +317,14 @@ body {
     right: 100%;
     transform: translateY(-50%);
     border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
     border-right-color: rgba(0, 0, 0, 0.9);
 }
 
 /* Tooltip positioned to the left (for right edge circles) */
 .tooltip.tooltip-left {
-    right: calc(100% + 10px);
+    right: calc(100% + 5px);
     left: auto;
     bottom: 50%;
     transform: translateY(50%);
@@ -334,6 +336,8 @@ body {
     left: 100%;
     transform: translateY(-50%);
     border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
     border-left-color: rgba(0, 0, 0, 0.9);
 }
 
@@ -349,6 +353,32 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(-5px);
+}
+
+/* Show tooltip on hover - Right positioned (for left edge) */
+.map-circle:hover .tooltip.tooltip-right {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(50%) translateX(3px);
+}
+
+.map-circle.active .tooltip.tooltip-right {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(50%) translateX(3px);
+}
+
+/* Show tooltip on hover - Left positioned (for right edge) */
+.map-circle:hover .tooltip.tooltip-left {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(50%) translateX(-3px);
+}
+
+.map-circle.active .tooltip.tooltip-left {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(50%) translateX(-3px);
 }
 
 /* Map circle hover effects - Works on all versions */
