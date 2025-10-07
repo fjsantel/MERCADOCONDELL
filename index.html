@@ -79,6 +79,27 @@
             <div class="store-info-container">
                 <div class="store-info-left">
                     <div class="store-number-circle" id="storeNumberCircle">1</div>
+                    <div class="category-filter-container">
+                        <button id="categoryFilterBtn" class="category-filter-button" onclick="toggleCategoryFilter()">
+                            FILTRAR CATEGORÍAS
+                        </button>
+                        <div id="categoryFilterDropdown" class="category-filter-dropdown">
+                            <select id="categorySelect" onchange="filterByCategory()">
+                                <option value="">Todas las categorías</option>
+                                <option value="alimentos">Alimentos</option>
+                                <option value="ropa">Ropa</option>
+                                <option value="musica">Música</option>
+                                <option value="decoracion">Decoración</option>
+                                <option value="cultura">Cultura</option>
+                                <option value="artesanias">Artesanías</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="juguetes">Juguetes</option>
+                                <option value="hogar">Hogar</option>
+                                <option value="servicios">Servicios</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="store-info-center">
                     <div class="store-description">
@@ -90,27 +111,6 @@
                         <h2 class="store-name" id="storeName">MERCADO CONDELL</h2>
                     </div>
                     <div class="store-info-right-bottom">
-                        <div class="category-filter-container">
-                            <button id="categoryFilterBtn" class="category-filter-button" onclick="toggleCategoryFilter()">
-                                FILTRAR CATEGORÍAS
-                            </button>
-                            <div id="categoryFilterDropdown" class="category-filter-dropdown">
-                                <select id="categorySelect" onchange="filterByCategory()">
-                                    <option value="">Todas las categorías</option>
-                                    <option value="alimentos">Alimentos</option>
-                                    <option value="ropa">Ropa</option>
-                                    <option value="musica">Música</option>
-                                    <option value="decoracion">Decoración</option>
-                                    <option value="cultura">Cultura</option>
-                                    <option value="artesanias">Artesanías</option>
-                                    <option value="tecnologia">Tecnología</option>
-                                    <option value="belleza">Belleza</option>
-                                    <option value="juguetes">Juguetes</option>
-                                    <option value="hogar">Hogar</option>
-                                    <option value="servicios">Servicios</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="social-icons">
                             <div class="social-icon"></div>
                             <div class="social-icon"></div>

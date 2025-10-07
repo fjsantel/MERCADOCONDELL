@@ -495,11 +495,13 @@ body {
     display: none;
 }
 
-/* Left section - Circle (always centered) */
+/* Left section - Circle and filter */
 .store-info-left {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 15px;
 }
 
 .store-number-circle {
