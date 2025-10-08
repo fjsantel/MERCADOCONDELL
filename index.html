@@ -116,9 +116,13 @@
 
         <!-- Store Information Section -->
         <section class="store-info">
-            <div class="store-info-container">
+            <div class="store-info-container desktop-layout">
+                <!-- LEFT: Number + Name + Filter -->
                 <div class="store-info-left">
-                    <div class="store-number-circle" id="storeNumberCircle">1</div>
+                    <div class="left-content">
+                        <div class="store-number-circle" id="storeNumberCircle">1</div>
+                        <h3 class="store-name-left" id="storeNameLeft">MERCADO CONDELL</h3>
+                    </div>
                     <div class="category-filter-container">
                         <button id="categoryFilterBtn" class="category-filter-button" onclick="toggleCategoryFilter()">
                             FILTRAR CATEGORÍAS
@@ -141,42 +145,44 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CENTER: Description + Ver Más -->
                 <div class="store-info-center">
                     <div class="store-description">
                         <p id="storeDescription">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
                     <button id="verMasBtn" class="ver-mas-button" onclick="openStoreDetailPopup()" style="display: none;">VER MÁS</button>
                 </div>
+
+                <!-- RIGHT: Name + Social Icons -->
                 <div class="store-info-right">
-                    <div class="store-info-right-top">
-                        <h2 class="store-name" id="storeName">MERCADO CONDELL</h2>
-                    </div>
-                    <div class="store-info-right-bottom">
-                        <div class="social-icons">
-                            <div class="social-icon"></div>
-                            <div class="social-icon"></div>
-                            <div class="social-icon"></div>
-                        </div>
+                    <h2 class="store-name-right" id="storeNameRight">MERCADO CONDELL</h2>
+                    <div class="social-icons">
+                        <div class="social-icon"></div>
+                        <div class="social-icon"></div>
+                        <div class="social-icon"></div>
                     </div>
                 </div>
-                
-                <!-- Mobile layout: Circle + Title in same line -->
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="store-info-container mobile-layout">
                 <div class="mobile-header">
-                    <div class="store-number-circle mobile-circle" id="storeNumberCircleMobile">1</div>
-                    <h2 class="store-name mobile-title" id="storeNameMobile">MERCADO CONDELL</h2>
+                    <div class="store-number-circle" id="storeNumberCircleMobile">1</div>
+                    <h2 class="store-name" id="storeNameMobile">MERCADO CONDELL</h2>
                 </div>
-                
-                <!-- Mobile description and social icons -->
+
                 <div class="mobile-content">
-                    <div class="store-description mobile-description">
+                    <div class="store-description">
                         <p id="storeDescriptionMobile">Selecciona un número en el mapa para ver la información de la tienda.</p>
                     </div>
-                    <button id="verMasBtnMobile" class="ver-mas-button mobile" onclick="openStoreDetailPopup()" style="display: none;">VER MÁS</button>
-                    <div class="category-filter-container mobile-category-filter">
-                        <button id="categoryFilterBtnMobile" class="category-filter-button mobile" onclick="toggleCategoryFilter()">
+                    <button id="verMasBtnMobile" class="ver-mas-button" onclick="openStoreDetailPopup()" style="display: none;">VER MÁS</button>
+
+                    <div class="category-filter-container">
+                        <button id="categoryFilterBtnMobile" class="category-filter-button" onclick="toggleCategoryFilter()">
                             FILTRAR CATEGORÍAS
                         </button>
-                        <div id="categoryFilterDropdownMobile" class="category-filter-dropdown mobile">
+                        <div id="categoryFilterDropdownMobile" class="category-filter-dropdown">
                             <select id="categorySelectMobile" onchange="filterByCategoryMobile()">
                                 <option value="">Todas las categorías</option>
                                 <option value="alimentos">Alimentos</option>
@@ -193,7 +199,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="social-icons mobile-social">
+
+                    <div class="social-icons">
                         <div class="social-icon"></div>
                         <div class="social-icon"></div>
                         <div class="social-icon"></div>
@@ -570,7 +577,8 @@
 
             // Update desktop version
             document.getElementById('storeNumberCircle').textContent = storeNumber;
-            document.getElementById('storeName').textContent = store.name;
+            document.getElementById('storeNameLeft').textContent = store.name;
+            document.getElementById('storeNameRight').textContent = store.name;
             document.getElementById('storeDescription').textContent = store.description;
 
             // Update mobile version

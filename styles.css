@@ -585,37 +585,49 @@ body {
 /* Store information section - Full width, fixed height */
 .store-info {
     width: 100%;
-    height: 254px;
+    min-height: 254px;
     background-color: #000000;
     margin: 0;
     position: relative;
 }
 
-.store-info-container {
+/* Desktop Layout - 3 Column Grid */
+.store-info-container.desktop-layout {
     display: grid;
-    grid-template-columns: 100px 1fr 300px;
+    grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr) minmax(200px, 1fr);
+    gap: 30px;
     height: 100%;
     padding: 30px;
+    align-items: center;
 }
 
-/* Hide mobile layout in desktop */
-.mobile-header,
-.mobile-content {
+/* Mobile Layout - Hidden by default */
+.store-info-container.mobile-layout {
     display: none;
 }
 
-/* Left section - Circle and filter */
+/* ========== LEFT COLUMN ========== */
 .store-info-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
+    height: 100%;
     justify-content: center;
-    gap: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .store-number-circle {
-    width: 38px;
-    height: 38px;
+    width: 50px;
+    height: 50px;
     background-color: #F7EFE2;
     border-radius: 50%;
     display: flex;
@@ -623,21 +635,37 @@ body {
     justify-content: center;
     font-family: 'Author', sans-serif;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 24px;
     color: #000000;
+    flex-shrink: 0;
 }
 
-/* Center section - Description (always centered and justified) */
+.store-name-left {
+    font-family: 'Author', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #F4B609;
+    text-align: center;
+    margin: 0;
+    line-height: 1.3;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* ========== CENTER COLUMN ========== */
 .store-info-center {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
     justify-content: center;
-    padding: 0 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
 }
 
 .store-description {
     width: 100%;
-    max-width: 385px;
 }
 
 .store-description p {
@@ -646,51 +674,53 @@ body {
     font-size: 14px;
     color: white;
     text-align: justify;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
 }
 
-/* Right section - Store details (subdivided top/bottom) */
+/* ========== RIGHT COLUMN ========== */
 .store-info-right {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 20px;
-}
-
-.store-info-right-top {
-    display: flex;
+    height: 100%;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
 }
 
-.store-info-right-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-/* Store name */
-.store-name {
+.store-name-right {
     font-family: 'Author', sans-serif;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     margin: 0;
-    white-space: nowrap;
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 /* Social icons */
 .social-icons {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 .social-icon {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background-color: #F4B609;
-    border-radius: 4px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #e6a308;
+    transform: translateY(-2px);
 }
 
 /* Responsive adjustments */
@@ -699,103 +729,96 @@ body {
     .map-circle {
         --circle-individual-scale: 0.7;
     }
-    
+
     .main-container {
         width: 95vw;
         max-width: 1146px;
         height: auto;
         min-height: 100vh;
     }
-    
+
     .header {
         width: 100%;
         height: auto;
         min-height: 120px;
         padding: 0 20px;
     }
-    
+
     .logo-svg {
         --logo-height: 60px;
     }
-    
+
     .menu-button {
         width: auto;
         min-width: 150px;
         padding: 10px 20px;
     }
-    
+
     .map-section {
         width: 100%;
         height: auto;
         min-height: auto;
     }
-    
+
     .map-container {
         width: 100%;
         height: 100%;
     }
-    
+
     .map-image {
         width: 100%;
         height: 100%;
     }
-    
-    .store-info {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
+
+    /* Store Info - Switch to Mobile Layout */
+    .store-info-container.desktop-layout {
+        display: none;
     }
-    
-    .store-info {
-        height: auto;
-        padding: 20px 0;
-    }
-    
-    .store-info-container {
+
+    .store-info-container.mobile-layout {
         display: flex;
         flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
-    
-    /* Hide desktop layout in mobile */
-    .store-info-left,
-    .store-info-center,
-    .store-info-right {
-        display: none;
-    }
-    
-    /* Show mobile layout */
+
     .mobile-header {
         display: flex;
         align-items: center;
-        gap: 20px;
-        justify-content: flex-start;
+        gap: 15px;
     }
-    
-    .mobile-content {
-        display: block;
+
+    .mobile-header .store-number-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
-    
-    .mobile-description p {
-        text-align: justify;
-        font-size: 12px;
-        margin-bottom: 15px;
-    }
-    
-    .mobile-title {
+
+    .mobile-header .store-name {
+        font-family: 'Author', sans-serif;
+        font-weight: 700;
         font-size: 18px;
-        text-align: left;
+        color: white;
         margin: 0;
     }
-    
-    .mobile-social {
+
+    .mobile-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .mobile-content .store-description p {
+        font-size: 13px;
+    }
+
+    .mobile-content .social-icons {
         justify-content: flex-start;
     }
-    
-    .social-icon {
-        width: 25px;
-        height: 25px;
+
+    .mobile-content .social-icon {
+        width: 30px;
+        height: 30px;
     }
 }
 
