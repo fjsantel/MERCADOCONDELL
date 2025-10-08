@@ -475,9 +475,11 @@
             sliderContainer.innerHTML = '';
 
             const photos = [store.foto1, store.foto2, store.foto3];
+            const timestamp = new Date().getTime(); // Cache busting
             photos.forEach((photo, index) => {
                 if (photo) {
-                    sliderContainer.innerHTML += `<img src="${photo}" alt="${store.name} - Foto ${index + 1}" class="slider-image" style="object-fit: cover;">`;
+                    const photoUrl = `${photo}?v=${timestamp}`;
+                    sliderContainer.innerHTML += `<img src="${photoUrl}" alt="${store.name} - Foto ${index + 1}" class="slider-image" style="object-fit: cover;">`;
                 } else {
                     sliderContainer.innerHTML += `<div class="slider-image">FOTO ${index + 1}</div>`;
                 }
