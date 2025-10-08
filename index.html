@@ -298,6 +298,10 @@
 
         // Store data loaded from CMS
         let storeData = {};
+
+        // Detect base path for images (for GitHub Pages compatibility)
+        const basePath = window.location.hostname === 'fjsantel.github.io' ? '/MERCADOCONDELL' : '';
+
         // Function to load data from CMS
         async function loadStoreData() {
             try {
@@ -478,7 +482,7 @@
             const timestamp = new Date().getTime(); // Cache busting
             photos.forEach((photo, index) => {
                 if (photo) {
-                    const photoUrl = `${photo}?v=${timestamp}`;
+                    const photoUrl = `${basePath}${photo}?v=${timestamp}`;
                     sliderContainer.innerHTML += `<img src="${photoUrl}" alt="${store.name} - Foto ${index + 1}" class="slider-image" style="object-fit: cover;">`;
                 } else {
                     sliderContainer.innerHTML += `<div class="slider-image">FOTO ${index + 1}</div>`;
